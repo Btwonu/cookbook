@@ -8,7 +8,6 @@ import './css/main.scss';
 import service from './services/recipeService';
 
 // Components
-import Block from './components/Block/Block';
 import Container from './components/Container/Container';
 import Card from './components/Card/Card';
 import Category from './components/Category/Category';

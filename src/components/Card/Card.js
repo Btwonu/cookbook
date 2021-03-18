@@ -1,5 +1,4 @@
 import React from 'react';
-import cucumbo from '../../images/cucumbo.jpg';
 
 import './Card.css';
 
