@@ -19,14 +19,24 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    service.getAll().then((recipes) => this.setState({ recipes }));
+    service.getAll().then((recipes) => {
+      const lunchRecipes = recipes.filter((r) => r.category == 'lunch');
+      const breakfastRecipes = recipes.filter((r) => r.category == 'breakfast');
+      const desertRecipes = recipes.filter((r) => r.category == 'desert');
+
+      this.setState({
+        lunchRecipes,
+        breakfastRecipes,
+        desertRecipes,
+      });
+    });
   }
 
   render() {
     return (
       <Container>
         <Category name="Breakfast">
-          {this.state.recipes?.map((recipe) => (
+          {this.state.breakfastRecipes?.map((recipe) => (
             <Card
               key={recipe.id}
               title={recipe.title}
@@ -38,7 +48,30 @@ export class App extends Component {
           ))}
         </Category>
 
-        <Category name="Lunch"></Category>
+        <Category name="Lunch">
+          {this.state.lunchRecipes?.map((recipe) => (
+            <Card
+              key={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              createdAt={recipe.createdAt}
+              chef={recipe.chef}
+              category={recipe.category}
+            />
+          ))}
+        </Category>
+        <Category name="Desert">
+          {this.state.desertRecipes?.map((recipe) => (
+            <Card
+              key={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              createdAt={recipe.createdAt}
+              chef={recipe.chef}
+              category={recipe.category}
+            />
+          ))}
+        </Category>
       </Container>
     );
   }
