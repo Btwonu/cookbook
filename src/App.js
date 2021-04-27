@@ -1,31 +1,26 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './css/main.scss';
-import { Helmet } from 'react-helmet';
-import Layout from './components/layout/Layout';
+import Layout from './pages/layouts/Layout';
 
 import heroImage from './assets/images/baker-amico.svg';
+
+import Main from './pages/Main';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/holy" component={Holy} />
-        </Switch>
-      </Layout>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/holy" component={Main} />
+      </Switch>
     </BrowserRouter>
   );
 };
 
-function Holy() {
-  return <>Hello</>;
-}
-
 function Landing() {
   return (
-    <>
+    <Layout>
       {/* Hero */}
       <section className="text-accentDark">
         <div className="container mx-auto flex px-16 py-24 md:flex-row flex-col items-center">
@@ -62,7 +57,7 @@ function Landing() {
           <div className="flex flex-wrap m-4"></div>
         </div>
       </section>
-    </>
+    </Layout>
   );
 }
 
@@ -71,30 +66,6 @@ function Register() {
     <main>
       <h2>Register</h2>
     </main>
-  );
-}
-
-function Card() {
-  return (
-    <div className="xl:w-1/4 md:w-1/2 p-4">
-      <div className="bg-mainDark p-6 rounded-lg">
-        <img
-          className="h-40 rounded w-full object-cover object-center mb-6"
-          src="https://dummyimage.com/720x400"
-          alt="content"
-        />
-        <h3 className="tracking-widest text-dark text-xs font-medium title-font">
-          SUBTITLE
-        </h3>
-        <h2 className="text-lg text-dark font-medium title-font mb-4">
-          Chichen Itza
-        </h2>
-        <p className="leading-relaxed text-base text-accentDark">
-          Fingerstache flexitarian street art 8-bit waistcoat. Distillery
-          hexagon disrupt edison bulbche.
-        </p>
-      </div>
-    </div>
   );
 }
 
