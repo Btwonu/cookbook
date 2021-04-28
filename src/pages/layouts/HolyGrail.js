@@ -6,7 +6,7 @@ const HolyGrail = (props) => {
     <>
       <Header />
       <div className="flex flex-col bg-light">{props.children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

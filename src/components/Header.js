@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import { MdMenu } from 'react-icons/md';
 
 const Header = () => {
   return (
     <header className="bg-main text-dark">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center mb-4 md:mb-0">
+      <div className="container mx-auto flex p-5  items-center">
+        <MdMenu className="cursor-pointer text-2xl md:invisible" />
+        <a className="flex title-font font-medium items-center">
           <Link
             to="/"
             className="ml-3 text-xl hover:text-accentDark cursor-pointer"
@@ -12,8 +14,9 @@ const Header = () => {
             Cookbook
           </Link>
         </a>
-        <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <Link to="/" className="mr-5 hover:text-accentDark cursor-pointer">
+
+        <nav className="mx-auto flex flex-wrap items-center text-base justify-center">
+          {/* <Link to="/" className="mr-5 hover:text-accentDark cursor-pointer">
             Home
           </Link>
           <Link
@@ -39,9 +42,10 @@ const Header = () => {
             className="mr-5 hover:text-accentDark cursor-pointer"
           >
             Holy
-          </Link>
+          </Link> */}
         </nav>
-        <button className="inline-flex items-center bg-dark border-0 py-1 px-3 focus:outline-none hover:bg-accentDark rounded text-base text-light mt-4 md:mt-0">
+
+        <button className="inline-flex items-center bg-dark border-0 py-1 px-3 focus:outline-none hover:bg-accentDark rounded text-base text-light">
           Login
           <svg
             fill="none"

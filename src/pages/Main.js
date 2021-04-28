@@ -1,25 +1,59 @@
 import HolyGrail from './layouts/HolyGrail';
 import RecipeCard from '../components/RecipeCard';
+import { IconContext } from 'react-icons';
+import userAvatar from '../assets/images/avatars/av-0.svg';
+import {
+  MdSettings,
+  MdContentPaste,
+  MdTimer,
+  MdInput,
+  MdFavoriteBorder,
+  MdExpandMore,
+} from 'react-icons/md';
 
 const Main = () => {
   return (
     <HolyGrail>
-      <main className="flex flex-row flex-grow">
-        <nav className="w-4/5 shadow flex-col p-4">
-          <header>
-            <h2>Username</h2>
-          </header>
-          <section>
-            <a href="#">Link</a>
-            <a href="#">Link</a>
-            <a href="#">Link</a>
-            <a href="#">Link</a>
-          </section>
-          <footer>
-            <p>Footer</p>
-          </footer>
+      <main className="flex">
+        <nav className=" hidden md:block shadow flex flex-col p-4">
+          <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
+            <header>
+              <h2 className="text-center text-xl font-bold pb-2">Username</h2>
+              <img
+                src={userAvatar}
+                className="rounded-full m-auto w-3/6 py-4"
+              />
+              <hr />
+            </header>
+            <section>
+              <a href="#" className="flex items-center p-2 hover:bg-main">
+                <MdTimer /> Stopwatch
+              </a>
+
+              <a href="#" className="flex items-center p-2 hover:bg-main">
+                <MdContentPaste /> Food Journal
+              </a>
+              <a href="#" className="flex items-center p-2 hover:bg-main">
+                <MdSettings /> Settings
+              </a>
+              <a href="#" className="flex items-center p-2 hover:bg-main">
+                <MdFavoriteBorder /> Favorite Recipes
+                <MdExpandMore className="ml-2" />
+              </a>
+            </section>
+            <hr />
+            <footer>
+              <a
+                href="#"
+                className="flex items-center justify-center p-2 hover:bg-main"
+              >
+                <MdInput /> Logout
+              </a>
+            </footer>
+          </IconContext.Provider>
         </nav>
-        <article className="flex-grow">
+
+        <article className="flex-1">
           <div className="flex flex-wrap m-4">
             <RecipeCard />
             <RecipeCard />
@@ -32,22 +66,6 @@ const Main = () => {
             <RecipeCard />
           </div>
         </article>
-        <aside className="w-4/5 shadow p-4">
-          <p>This is the aside</p>
-          <ul>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-          </ul>
-          <p>
-            Mozzarella cheese slices cheese triangles. Chalk and cheese cut the
-            cheese cheese and wine cheesy feet blue castello pepper jack gouda
-            queso. Croque monsieur bocconcini stinking bishop dolcelatte
-            halloumi cream cheese smelly cheese st. agur blue cheese. Mozzarella
-            camembert de normandie.
-          </p>
-        </aside>
       </main>
     </HolyGrail>
   );
