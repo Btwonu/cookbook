@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import HolyGrail from './layouts/HolyGrail';
 import RecipeCard from '../components/RecipeCard';
 import { IconContext } from 'react-icons';
@@ -10,8 +12,20 @@ import {
   MdFavoriteBorder,
   MdExpandMore,
 } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
+  const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
+
+  const handler = (e) => {
+    e.preventDefault();
+    if (favoriteMenuOpened) {
+      setFavoriteMenuOpened(false);
+    } else {
+      setFavoriteMenuOpened(true);
+    }
+  };
+
   return (
     <HolyGrail>
       <main className="flex">
@@ -36,10 +50,32 @@ const Main = () => {
               <a href="#" className="flex items-center p-2 hover:bg-main">
                 <MdSettings /> Settings
               </a>
-              <a href="#" className="flex items-center p-2 hover:bg-main">
+              <a
+                onClick={handler}
+                className="flex items-center p-2 hover:bg-main cursor-pointer"
+              >
                 <MdFavoriteBorder /> Favorite Recipes
                 <MdExpandMore className="ml-2" />
               </a>
+              {favoriteMenuOpened ? (
+                <ul className="flex flex-col items-center max-w-fit-content">
+                  <li className="text-dark hover:text-accentDark text-center">
+                    <a href="#">On this page we’ve learned about</a>
+                  </li>
+                  <li className="text-dark hover:text-accentDark text-center">
+                    <a href="#">On this page we’ve learned about</a>
+                  </li>
+                  <li className="text-dark hover:text-accentDark text-center">
+                    <a href="#">On this page we’ve learned about</a>
+                  </li>
+                  <li className="text-dark hover:text-accentDark text-center">
+                    <a href="#">On this page we’ve learned about</a>
+                  </li>
+                  <li className="text-dark hover:text-accentDark text-center">
+                    <a href="#">On this page we’ve learned about</a>
+                  </li>
+                </ul>
+              ) : null}
             </section>
             <hr />
             <footer>

@@ -22,6 +22,9 @@ module.exports = {
         light: '#fdfdfd',
         dark: '#1f1235', // #1c0f30 || #1f1235
       },
+      maxWidth: {
+        'fit-content': 'fit-content',
+      },
     },
   },
   variants: {
