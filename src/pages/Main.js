@@ -13,6 +13,7 @@ import {
   MdFavoriteBorder,
   MdExpandMore,
 } from 'react-icons/md';
+import ThemeToggle from '../components/ThemeToggle';
 import { Link } from 'react-router-dom';
 
 import recipeService from '../services/recipeService';
@@ -39,7 +40,7 @@ const Main = () => {
   return (
     <HolyGrail>
       <main className="flex">
-        <nav className=" hidden md:block shadow flex flex-col p-4">
+        <nav className="text-dark hidden md:block shadow flex flex-col p-4">
           <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
             <header>
               <h2 className="text-center text-xl font-bold pb-2">Username</h2>
@@ -50,6 +51,7 @@ const Main = () => {
               <hr />
             </header>
             <section>
+              <ThemeToggle />
               <a href="#" className="flex items-center p-2 hover:bg-primary">
                 <MdTimer /> Stopwatch
               </a>
