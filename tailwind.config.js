@@ -13,14 +13,14 @@ module.exports = {
 
     extend: {
       colors: {
-        main: '#f4effc',
-        mainDark: '#e2daeb',
-        secondary: '#67568c',
-        accent: '#ff6e6c',
-        accentLight: '#ff7d7b',
-        accentDark: '#361a5e', // #331e54 || #301e4e || #361a5e
-        light: '#fdfdfd',
-        dark: '#1f1235', // #1c0f30 || #1f1235
+        primary: 'var(--color-primary)',
+        primaryHovered: 'var(--color-primary-hovered)',
+        secondary: 'var(--color-secondary)',
+        secondaryHovered: 'var(--color-secondary-hovered)',
+        accent: 'var(--color-accent)',
+        accentHovered: 'var(--color-accent-hovered)', // #331e54 || #301e4e || #361a5e
+        light: 'var(--color-light)',
+        dark: 'var(--color-dark)', // #1c0f30 || #1f1235
       },
       maxWidth: {
         'fit-content': 'fit-content',

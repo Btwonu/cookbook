@@ -22,7 +22,7 @@ function Landing() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="text-accentDark">
+      <section className="text-dark">
         <div className="container mx-auto flex px-16 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-dark">
@@ -35,7 +35,7 @@ function Landing() {
             <div className="flex justify-center w-full">
               <Link
                 to="/register"
-                className="inline-flex text-light bg-accent border-0 py-2 px-6 focus:outline-none hover:bg-accentLight rounded text-lg cursor-pointer"
+                className="inline-flex text-light bg-accent border-0 py-2 px-6 focus:outline-none hover:bg-accentHovered rounded text-lg cursor-pointer"
               >
                 Sign up now
               </Link>
@@ -52,7 +52,7 @@ function Landing() {
       </section>
 
       {/* Main */}
-      <section className="text-dark bg-main">
+      <section className="text-dark bg-primary">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap m-4"></div>
         </div>

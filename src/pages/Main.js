@@ -50,38 +50,38 @@ const Main = () => {
               <hr />
             </header>
             <section>
-              <a href="#" className="flex items-center p-2 hover:bg-main">
+              <a href="#" className="flex items-center p-2 hover:bg-primary">
                 <MdTimer /> Stopwatch
               </a>
 
-              <a href="#" className="flex items-center p-2 hover:bg-main">
+              <a href="#" className="flex items-center p-2 hover:bg-primary">
                 <MdContentPaste /> Food Journal
               </a>
-              <a href="#" className="flex items-center p-2 hover:bg-main">
+              <a href="#" className="flex items-center p-2 hover:bg-primary">
                 <MdSettings /> Settings
               </a>
               <a
                 onClick={handler}
-                className="flex items-center p-2 hover:bg-main cursor-pointer"
+                className="flex items-center p-2 hover:bg-primary cursor-pointer"
               >
                 <MdFavoriteBorder /> Favorite Recipes
                 <MdExpandMore className="ml-2" />
               </a>
               {favoriteMenuOpened ? (
                 <ul className="flex flex-col items-center max-w-fit-content">
-                  <li className="text-dark hover:text-accentDark text-center">
+                  <li className="text-dark hover:text-dark text-center">
                     <a href="#">On this page we’ve learned about</a>
                   </li>
-                  <li className="text-dark hover:text-accentDark text-center">
+                  <li className="text-dark hover:text-dark text-center">
                     <a href="#">On this page we’ve learned about</a>
                   </li>
-                  <li className="text-dark hover:text-accentDark text-center">
+                  <li className="text-dark hover:text-dark text-center">
                     <a href="#">On this page we’ve learned about</a>
                   </li>
-                  <li className="text-dark hover:text-accentDark text-center">
+                  <li className="text-dark hover:text-dark text-center">
                     <a href="#">On this page we’ve learned about</a>
                   </li>
-                  <li className="text-dark hover:text-accentDark text-center">
+                  <li className="text-dark hover:text-dark text-center">
                     <a href="#">On this page we’ve learned about</a>
                   </li>
                 </ul>
@@ -91,7 +91,7 @@ const Main = () => {
             <footer>
               <a
                 href="#"
-                className="flex items-center justify-center p-2 hover:bg-main"
+                className="flex items-center justify-center p-2 hover:bg-primary"
               >
                 <MdInput /> Logout
               </a>
