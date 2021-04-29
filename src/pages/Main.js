@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import HolyGrail from './layouts/HolyGrail';
 import RecipeCard from '../components/RecipeCard';
+import RecipeCardList from '../components/recipeCardList';
 import { IconContext } from 'react-icons';
 import userAvatar from '../assets/images/avatars/av-0.svg';
 import {
@@ -14,8 +15,11 @@ import {
 } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
+import recipeService from '../services/recipeService';
+
 const Main = () => {
   const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
+  const [recipes, setRecipes] = useState([]);
 
   const handler = (e) => {
     e.preventDefault();
@@ -25,6 +29,12 @@ const Main = () => {
       setFavoriteMenuOpened(true);
     }
   };
+
+  useEffect(() => {
+    recipeService.getAll().then((data) => {
+      setRecipes(data);
+    });
+  }, []);
 
   return (
     <HolyGrail>
@@ -90,17 +100,7 @@ const Main = () => {
         </nav>
 
         <article className="flex-1">
-          <div className="flex flex-wrap m-4">
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-          </div>
+          {recipes ? <RecipeCardList recipes={recipes} /> : null}
         </article>
       </main>
     </HolyGrail>
