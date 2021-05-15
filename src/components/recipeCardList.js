@@ -4,7 +4,7 @@ const RecipeCardList = (props) => {
   return (
     <div className="flex flex-wrap m-4">
       {props.recipes.map((recipe) => (
-        <RecipeCard {...recipe} />
+        <RecipeCard key={recipe._id} {...recipe} />
       ))}
     </div>
   );

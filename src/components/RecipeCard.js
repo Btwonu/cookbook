@@ -23,9 +23,7 @@ const RecipeCard = ({
         <h2 className="text-lg text-dark font-medium title-font mb-4">
           {title}
         </h2>
-        <p className="leading-relaxed text-base text-accentDark">
-          {description}
-        </p>
+        <p className="leading-relaxed text-base text-dark">{description}</p>
       </div>
     </div>
   );

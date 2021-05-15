@@ -1,0 +1,32 @@
+label.switch {
+  user-select: none;
+}
+
+[role='switch'] {
+  padding: 0;
+  margin-left: 1rem;
+  width: 3.4rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 1rem;
+  background-color: #d1d1d1;
+  transition: all 0.1s ease-in;
+}
+
+[role='switch'][aria-checked='true'] {
+  background-color: #0a0;
+  transition: all 0.1s ease-in;
+}
+
+[role='switch'] span {
+  padding: 0.2px 1px;
+  color: #fff;
+  margin: 1px;
+  pointer-events: none;
+  border-radius: 1rem;
+}
+
+[role='switch'][aria-checked='true'] :last-child,
+[role='switch'][aria-checked='false'] :first-child {
+  background: #fff;
+}
