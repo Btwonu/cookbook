@@ -1,6 +1,6 @@
 import Header from '../../components/Header';
 
-import { ThemeProvider } from '../../contexts/themeContext';
+import { ThemeProvider } from '../../contexts/ThemeContext';
 
 const HolyGrail = (props) => {
   return (

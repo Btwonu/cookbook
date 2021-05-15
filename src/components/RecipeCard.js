@@ -10,7 +10,7 @@ const RecipeCard = ({
   _id,
 }) => {
   return (
-    <div className="xl:w-1/4 md:w-1/2 p-4">
+    <div className="xl:w-1/3 lg:w-1/2 p-4">
       <div className="bg-main h-full p-6 rounded-lg">
         <img
           className="h-40 rounded w-full object-cover object-center mb-6"

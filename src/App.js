@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './css/main.scss';
 import Layout from './pages/layouts/Layout';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 import heroImage from './assets/images/baker-amico.svg';
 
@@ -10,9 +11,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/holy" component={Main} />
+        <ThemeProvider>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/holy" component={Main} />
+        </ThemeProvider>
       </Switch>
     </BrowserRouter>
   );
