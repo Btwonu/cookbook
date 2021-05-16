@@ -37,3 +37,8 @@
   white-space: nowrap;
   width: 1px;
 }
+
+.login-input,
+.register-input {
+  @apply border-b;
+}
