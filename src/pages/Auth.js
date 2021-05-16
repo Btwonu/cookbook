@@ -35,7 +35,7 @@ const Auth = () => {
           className="login-input p-1.5 mb-6"
           placeholder="Password"
         />
-        <button className="border p-1.5">Login</button>
+        <button className="btn">Login</button>
       </form>
     </>
   );

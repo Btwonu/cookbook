@@ -17,10 +17,7 @@ const Landing = () => {
               with other chefs and more.
             </p>
             <div className="flex justify-center w-full">
-              <Link
-                to="/auth"
-                className="inline-flex text-light bg-accent border-0 py-2 px-6 focus:outline-none hover:bg-accentHovered rounded text-lg cursor-pointer"
-              >
+              <Link to="/auth" className="btn">
                 Sign up now
               </Link>
             </div>

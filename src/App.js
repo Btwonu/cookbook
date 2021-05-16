@@ -12,7 +12,6 @@ const App = () => {
       <Switch>
         <ThemeProvider>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
           <Route exact path="/recipes" component={Recipe} />
           <Route exact path="/auth" component={Auth} />
         </ThemeProvider>
