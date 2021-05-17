@@ -5,6 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Landing from './pages/Landing';
 import Recipe from './pages/Recipe';
 import Auth from './pages/Auth';
+import CreateRecipe from './pages/CreateRecipe';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/recipes" component={Recipe} />
           <Route exact path="/auth" component={Auth} />
+          <Route exact path="/recipes/create" component={CreateRecipe} />
         </ThemeProvider>
       </Switch>
     </BrowserRouter>
