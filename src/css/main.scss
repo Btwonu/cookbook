@@ -50,3 +50,28 @@ body {
 .btn {
   @apply text-light bg-accent border-0 py-2 px-6 focus:outline-none hover:bg-accentHovered rounded cursor-pointer;
 }
+
+pre {
+  background-color: #343434;
+  color: #fdfdfd;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0 1rem 0;
+}
+
+code {
+  font-family: monospace;
+  font-size: inherit;
+  overflow-wrap: break-word;
+}
+
+p > code,
+li > code,
+dd > code,
+td > code {
+  background: #ffeff0;
+  word-wrap: break-word;
+  box-decoration-break: clone;
+  padding: 0.1rem 0.3rem 0.2rem;
+  border-radius: 0.2rem;
+}
