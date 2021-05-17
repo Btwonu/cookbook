@@ -1,5 +1,11 @@
+import Editor from '../components/Editor/Editor';
+
 const CreateRecipe = () => {
-  return <div>hi</div>;
+  return (
+    <div>
+      <Editor />
+    </div>
+  );
 };
 
 export default CreateRecipe;

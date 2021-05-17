@@ -32,4 +32,4 @@ export const EDITOR_JS_TOOLS = {
   simpleImage: SimpleImage,
 };
 
-// npm i @editorjs/embed @editorjs/table @editorjs/list @editorjs/warning @editorjs/code @editorjs/link @editorjs/image @editorjs/raw @editorjs/header @editorjs/quote @editorjs/marker @editorjs/checklist @editorjs/delimiter @editorjs/inline-code @editorjs/simple-image
+// npm i -D react-editor-js @editorjs/editorjs @editorjs/paragraph @editorjs/embed @editorjs/table @editorjs/list @editorjs/warning @editorjs/code @editorjs/link @editorjs/image @editorjs/raw @editorjs/header @editorjs/quote @editorjs/marker @editorjs/checklist @editorjs/delimiter @editorjs/inline-code @editorjs/simple-image
