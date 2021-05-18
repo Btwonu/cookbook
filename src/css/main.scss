@@ -42,6 +42,11 @@ body {
   background-color: var(--color-light);
 }
 
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .login-input,
 .register-input {
   @apply border-b;

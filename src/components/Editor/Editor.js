@@ -20,7 +20,7 @@ const Editor = ({ data }) => {
   };
 
   return (
-    <div className="text-dark editor-wrapper bg-primary flex flex-col mx-10 py-5 px-5 border rounded-md max-w-screen-md lg:m-auto">
+    <div className="text-dark editor-wrapper bg-primary flex flex-col mx-10 py-5 px-5 border rounded-md max-w-screen-md md:m-auto">
       <EditorJs
         instanceRef={(instance) => (editorInstance.current = instance)}
         tools={EDITOR_JS_TOOLS}
