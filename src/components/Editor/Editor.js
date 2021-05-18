@@ -20,14 +20,19 @@ const Editor = ({ data }) => {
   };
 
   return (
-    <>
-      <button onClick={saveHandler}>Save</button>
+    <div className="text-dark editor-wrapper bg-primary flex flex-col mx-10 py-5 px-5 border rounded-md max-w-screen-md lg:m-auto">
       <EditorJs
         instanceRef={(instance) => (editorInstance.current = instance)}
         tools={EDITOR_JS_TOOLS}
-        data={JSON.parse(data)}
+        data={JSON.parse(data) || []}
       />
-    </>
+      <button
+        className="btn w-4/5 mx-auto md:w-2/3 lg:w-2/4"
+        onClick={saveHandler}
+      >
+        Submit
+      </button>
+    </div>
   );
 };
 
