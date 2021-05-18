@@ -4,7 +4,7 @@ import { SiIfood } from 'react-icons/si';
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-dark border-primary h-full mt-10">
+    <footer className="bg-primary text-dark border-primary h-full p-6 pb-0">
       <SiIfood className="text-accent m-auto my-4" size={'2.6rem'} />
 
       <IconContext.Provider
