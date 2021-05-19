@@ -11,6 +11,7 @@ import RecipeDetails from './components/RecipeDetails';
 
 if (process.env.NODE_ENV === 'development') {
   console.log(process.env.NODE_ENV);
+  axios.defaults.withCredentials = true;
   axios.defaults.baseURL = 'http://localhost:5000';
 } else if (process.env.NODE_ENV === 'production') {
   console.log(process.env.NODE_ENV);
