@@ -1,4 +1,22 @@
+import { useState } from 'react';
+import axios from 'axios';
+
 const LoginForm = ({ setSelectedForm }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios({
+      method: 'POST',
+      url: '/auth/login',
+      data: { username, password },
+    })
+      .then((res) => console.log(res.data))
+      .catch(console.error);
+  };
+
   return (
     // uncomment sections if you want form to be centered in the page
     // <section className="flex items-center h-full">
@@ -19,7 +37,11 @@ const LoginForm = ({ setSelectedForm }) => {
         </button>
       </fieldset>
 
-      <form id="login-form" className="flex flex-col w-10/12">
+      <form
+        id="login-form"
+        className="flex flex-col w-10/12"
+        onSubmit={handleSubmit}
+      >
         <label className="visually-hidden" htmlFor="login-username">
           Username
         </label>
@@ -29,6 +51,8 @@ const LoginForm = ({ setSelectedForm }) => {
           id="login-username"
           className="login-input bg-light p-1.5 mb-6"
           placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
 
         <label className="visually-hidden" htmlFor="login-password">
@@ -40,6 +64,8 @@ const LoginForm = ({ setSelectedForm }) => {
           id="login-password"
           className="login-input bg-light p-1.5 mb-6"
           placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button className="btn">Login</button>
       </form>
