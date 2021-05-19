@@ -1,5 +1,9 @@
 import { IconContext } from 'react-icons';
-import { TiSocialTwitter } from 'react-icons/ti';
+import {
+  TiSocialTwitter,
+  TiSocialGithub,
+  TiSocialLinkedin,
+} from 'react-icons/ti';
 import { SiIfood } from 'react-icons/si';
 
 const Footer = () => {
@@ -14,9 +18,17 @@ const Footer = () => {
         }}
       >
         <div className="flex justify-center my-2">
-          <TiSocialTwitter />
-          <TiSocialTwitter />
-          <TiSocialTwitter />
+          <a href="https://github.com/Btwonu" target="_blank">
+            <TiSocialGithub />
+          </a>
+
+          <a href="https://www.linkedin.com/in/valdechev" target="_blank">
+            <TiSocialLinkedin />
+          </a>
+
+          <a href="https://twitter.com/Btwonu" target="_blank">
+            <TiSocialTwitter />
+          </a>
         </div>
       </IconContext.Provider>
 
