@@ -1,4 +1,4 @@
-import AuthForm from '../components/AuthForm';
+import AuthForm from '../components/Auth/AuthForm';
 import Layout from './layouts/Layout';
 
 const Auth = () => {
