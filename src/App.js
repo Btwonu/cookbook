@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './css/main.scss';
+import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import axios from 'axios';
 
@@ -21,13 +22,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <ThemeProvider>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/auth" component={Auth} />
-          <Route exact path="/recipes/create" component={CreateRecipe} />
-          <Route exact path="/recipes/one" component={RecipeDetails} />
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/recipes" component={Recipes} />
+            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/recipes/create" component={CreateRecipe} />
+            <Route exact path="/recipes/one" component={RecipeDetails} />
+          </ThemeProvider>
+        </AuthProvider>
       </Switch>
     </BrowserRouter>
   );
