@@ -20,7 +20,7 @@ const LoginForm = ({ setSelectedForm }) => {
   return (
     // uncomment sections if you want form to be centered in the page
     // <section className="flex items-center h-full">
-    <div className="bg-light flex flex-col flex-grow items-center border text-dark my-10 mx-auto pb-10 min-w-80 max-w-xs  sm:max-w-sm  md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+    <div className="bg-light flex flex-col flex-grow items-center border text-dark mt-10 mx-auto pb-10 min-w-80 max-w-xs  sm:max-w-sm  md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
       <fieldset className="w-full pb-8">
         <legend className="visually-hidden">Select Form:</legend>
         <button

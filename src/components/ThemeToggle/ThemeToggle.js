@@ -5,18 +5,22 @@ import './styles.scss';
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useContext(ThemeContext);
-  const [toggled, setToggled] = useState(false);
+  const [toggled, setToggled] = useState(theme === 'dark' ? 'true' : 'false');
 
-  useEffect(() => {
-    setTheme(toggled ? 'dark' : 'light');
-  }, [toggled, setTheme]);
+  // useEffect(() => {
+  //   console.log('from theme toggle:', theme);
+  //   // setTheme(toggled ? 'dark' : 'light');
+  // }, [theme, toggled, setTheme]);
 
   const toggleTheme = (e) => {
-    let state = e.target.ariaChecked;
-    let isChecked = state === 'true';
+    // let state = e.target.ariaChecked;
+    // let isChecked = state === 'true';
+    let isChecked = toggled === 'true';
 
-    e.target.setAttribute('aria-checked', isChecked ? 'false' : 'true');
-    setToggled(isChecked ? false : true);
+    // e.target.setAttribute('aria-checked', isChecked ? 'false' : 'true');
+
+    setToggled(isChecked ? 'false' : 'true');
+    setTheme(isChecked ? 'light' : 'dark');
   };
 
   return (
@@ -37,7 +41,7 @@ const ThemeToggle = () => {
       <button
         type="button"
         role="switch"
-        aria-checked="false"
+        aria-checked={toggled}
         id="theme-toggle"
         className="switch"
         onClick={toggleTheme}
