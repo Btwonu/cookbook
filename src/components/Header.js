@@ -2,6 +2,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 
+import AvatarButton from './AvatarButton';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
 
 const Header = () => {
@@ -19,37 +20,38 @@ const Header = () => {
         </Link>
 
         <nav className="mx-auto flex flex-wrap items-center text-base justify-center">
-          {/* <Link to="/" className="mr-5 hover:text-accentDark cursor-pointer">
-            Home
-          </Link>
-          <Link
-            to="/recipes"
-            className="mr-5 hover:text-accentDark cursor-pointer"
-          >
-            Recipes
-          </Link>
-          <Link
-            to="/about"
-            className="mr-5 hover:text-accentDark cursor-pointer"
-          >
-            About
-          </Link>
-          <Link
-            to="/dashboard"
-            className="mr-5 hover:text-accentDark cursor-pointer"
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/holy"
-            className="mr-5 hover:text-accentDark cursor-pointer"
-          >
-            Holy
-          </Link> */}
+          {user && (
+            <>
+              <Link
+                to="/"
+                className="mr-5 hover:text-accentDark cursor-pointer"
+              >
+                Home
+              </Link>
+              <Link
+                to="/recipes"
+                className="mr-5 hover:text-accentDark cursor-pointer"
+              >
+                Recipes
+              </Link>
+              <Link
+                to="/about"
+                className="mr-5 hover:text-accentDark cursor-pointer"
+              >
+                About
+              </Link>
+              <Link
+                to="/dashboard"
+                className="mr-5 hover:text-accentDark cursor-pointer"
+              >
+                Dashboard
+              </Link>
+            </>
+          )}
         </nav>
 
         {user ? (
-          <ThemeToggle />
+          <AvatarButton />
         ) : (
           <Link
             to="/auth"

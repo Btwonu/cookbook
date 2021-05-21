@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import HolyGrail from './layouts/HolyGrail';
 import RecipeCardList from '../components/recipeCardList';
 import Sidebar from '../components/Sidebar';
+import Aside from '../components/Aside';
 import recipeService from '../services/recipeService';
 
 const Recipes = () => {
@@ -25,6 +26,7 @@ const Recipes = () => {
           {recipes ? <RecipeCardList recipes={recipes} /> : null}
         </article>
       </main>
+      <Aside />
     </HolyGrail>
   );
 };
