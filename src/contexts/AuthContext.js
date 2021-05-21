@@ -8,16 +8,20 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    console.log('updateUser');
     updateUser();
   }, []);
 
   const updateUser = () => {
     return axios
-      .get('/auth/')
+      .get('/auth')
       .then((res) => {
         setUser(res.data);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        setUser(null);
+      });
   };
 
   const login = (username, password) => {
@@ -32,11 +36,16 @@ export const AuthProvider = ({ children }) => {
       .catch(console.error);
   };
 
+  const logout = () => {
+    return axios.get('/auth/logout');
+  };
+
   const contextValue = {
     user,
     setUser,
     login,
     updateUser,
+    logout,
   };
 
   return (

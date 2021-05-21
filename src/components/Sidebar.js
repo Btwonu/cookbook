@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import userAvatar from '../assets/images/avatars/av-0.svg';
 import {
@@ -10,10 +11,11 @@ import {
   MdExpandMore,
 } from 'react-icons/md';
 
-import authService from '../services/authService';
+import { useAuth } from '../contexts/AuthContext';
 
-const Sidebar = () => {
+const Sidebar = ({ history }) => {
   const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
+  const { logout, updateUser } = useAuth();
 
   const handler = (e) => {
     e.preventDefault();
@@ -26,12 +28,10 @@ const Sidebar = () => {
 
   const logoutHandler = (e) => {
     e.preventDefault();
-    authService
-      .logout()
-      .then((res) => {
-        console.log('logged out');
-      })
-      .catch(console.error);
+    logout().then(() => {
+      updateUser();
+      history.push('/');
+    });
   };
 
   return (
@@ -106,4 +106,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
