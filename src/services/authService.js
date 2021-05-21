@@ -4,6 +4,8 @@ const logout = () => {
   return axios.get('/auth/logout');
 };
 
-export default {
+const authService = {
   logout,
 };
+
+export default authService;

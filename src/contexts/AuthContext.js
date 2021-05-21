@@ -1,35 +1,46 @@
 import { createContext, useEffect, useState, useContext } from 'react';
-
-const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
-
-const getUser = () => sleep(3000).then(() => ({ username: 'elmo' }));
+import axios from 'axios';
 
 export const AuthContext = createContext();
 AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({ children }) => {
-  const [state, setState] = useState({
-    status: 'pending',
-    error: null,
-    user: null,
-  });
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    getUser().then((user) =>
-      setState({ status: 'success', error: null, user })
-    );
+    updateUser();
   }, []);
 
+  const updateUser = () => {
+    return axios
+      .get('/auth/')
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch(console.error);
+  };
+
+  const login = (username, password) => {
+    return axios({
+      method: 'POST',
+      url: '/auth/login',
+      data: { username, password },
+    })
+      .then((res) => {
+        console.log('Logged in through form');
+      })
+      .catch(console.error);
+  };
+
+  const contextValue = {
+    user,
+    setUser,
+    login,
+    updateUser,
+  };
+
   return (
-    <AuthContext.Provider value={state}>
-      {state.status === 'pending' ? (
-        'Loading...'
-      ) : state.status === 'error' ? (
-        <div>Error'ed</div>
-      ) : (
-        children
-      )}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 

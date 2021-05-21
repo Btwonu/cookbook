@@ -1,14 +1,6 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './css/main.scss';
-import { AuthProvider } from './contexts/AuthContext';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { useAuth } from './contexts/AuthContext';
 import axios from 'axios';
-
-import Landing from './pages/Landing';
-import Recipes from './pages/Recipes';
-import Auth from './pages/Auth';
-import CreateRecipe from './pages/CreateRecipe';
-import RecipeDetails from './components/RecipeDetails';
+import { AuthenticatedRoutes, UnauthenticatedRoutes } from './routes';
 
 if (process.env.NODE_ENV === 'development') {
   console.log(process.env.NODE_ENV);
@@ -19,21 +11,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <AuthProvider>
-          <ThemeProvider>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/recipes" component={Recipes} />
-            <Route exact path="/auth" component={Auth} />
-            <Route exact path="/recipes/create" component={CreateRecipe} />
-            <Route exact path="/recipes/one" component={RecipeDetails} />
-          </ThemeProvider>
-        </AuthProvider>
-      </Switch>
-    </BrowserRouter>
-  );
+  const { user } = useAuth();
+  console.log({ user });
+
+  return user ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />;
 };
 
 export default App;

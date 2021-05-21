@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { MdBrightnessMedium } from 'react-icons/md';
 import './styles.scss';

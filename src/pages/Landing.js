@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import heroImage from '../assets/images/baker-amico.svg';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 
 const Landing = () => {
-  const state = useAuth();
-
-  console.log(state);
+  // const { user } = useAuth();
 
   return (
     <Layout>

@@ -1,20 +1,19 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-const LoginForm = ({ setSelectedForm }) => {
+import { useAuth } from '../../contexts/AuthContext';
+
+const LoginForm = ({ setSelectedForm, history }) => {
+  const { login, updateUser } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios({
-      method: 'POST',
-      url: '/auth/login',
-      data: { username, password },
-    })
-      .then((res) => console.log(res.data))
-      .catch(console.error);
+    login(username, password).then((res) => {
+      updateUser();
+      history.push('/');
+    });
   };
 
   return (
@@ -74,4 +73,4 @@ const LoginForm = ({ setSelectedForm }) => {
   );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);

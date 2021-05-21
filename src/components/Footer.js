@@ -18,15 +18,27 @@ const Footer = () => {
         }}
       >
         <div className="flex justify-center my-2">
-          <a href="https://github.com/Btwonu" target="_blank">
+          <a
+            href="https://github.com/Btwonu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <TiSocialGithub />
           </a>
 
-          <a href="https://www.linkedin.com/in/valdechev" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/valdechev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <TiSocialLinkedin />
           </a>
 
-          <a href="https://twitter.com/Btwonu" target="_blank">
+          <a
+            href="https://twitter.com/Btwonu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <TiSocialTwitter />
           </a>
         </div>

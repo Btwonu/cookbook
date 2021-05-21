@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 
 import ThemeToggle from './ThemeToggle/ThemeToggle';
 
 const Header = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const { user } = useAuth();
 
   return (
     <header className="bg-primary text-dark">
@@ -48,23 +48,26 @@ const Header = () => {
           </Link> */}
         </nav>
 
-        {loggedIn ? (
-          <button className="inline-flex items-center bg-secondary border-0 py-1 px-3 focus:outline-none hover:bg-secondaryHovered rounded text-base text-light">
+        {user ? (
+          <ThemeToggle />
+        ) : (
+          <Link
+            to="/auth"
+            className="inline-flex items-center bg-secondary border-0 py-1 px-3 focus:outline-none hover:bg-secondaryHovered rounded text-base text-light"
+          >
             Login
             <svg
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="w-4 h-4 ml-1"
               viewBox="0 0 24 24"
             >
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </button>
-        ) : (
-          <ThemeToggle />
+          </Link>
         )}
       </div>
     </header>
