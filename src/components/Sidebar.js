@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import userAvatar from '../assets/images/avatars/av-0.svg';
 import {
@@ -13,11 +13,21 @@ import {
 
 import { useAuth } from '../contexts/AuthContext';
 
+const MenuItem = ({ linkTo, children, handler }) => {
+  return (
+    <li onClick={handler}>
+      <Link className="flex items-center p-2 hover:bg-primary" to={linkTo}>
+        {children}
+      </Link>
+    </li>
+  );
+};
+
 const Sidebar = ({ history }) => {
   const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
   const { logout, updateUser } = useAuth();
 
-  const handler = (e) => {
+  const openFavoriteMenu = (e) => {
     e.preventDefault();
     if (favoriteMenuOpened) {
       setFavoriteMenuOpened(false);
@@ -47,30 +57,29 @@ const Sidebar = ({ history }) => {
           <hr />
         </header>
         <section>
-          <a
-            href="/stopwatch"
-            className="flex items-center p-2 hover:bg-primary"
-          >
-            <MdTimer /> Stopwatch
-          </a>
+          <ul>
+            <MenuItem linkTo="/stopwatch">
+              <MdTimer />
+              Stopwatch
+            </MenuItem>
 
-          <a href="/journal" className="flex items-center p-2 hover:bg-primary">
-            <MdContentPaste /> Food Journal
-          </a>
-          <a
-            href="/settings"
-            className="flex items-center p-2 hover:bg-primary"
-          >
-            <MdSettings /> Settings
-          </a>
-          <a
-            href="/favorites"
-            onClick={handler}
-            className="flex items-center p-2 hover:bg-primary cursor-pointer"
-          >
-            <MdFavoriteBorder /> Favorite Recipes
-            <MdExpandMore className="ml-2" />
-          </a>
+            <MenuItem linkTo="/journal">
+              <MdContentPaste />
+              Food Journal
+            </MenuItem>
+
+            <MenuItem linkTo="/settings">
+              <MdSettings />
+              Settings
+            </MenuItem>
+
+            <MenuItem linkTo="/" handler={openFavoriteMenu}>
+              <MdFavoriteBorder />
+              Favorite Recipes
+              <MdExpandMore className="ml-2" />
+            </MenuItem>
+          </ul>
+
           {favoriteMenuOpened ? (
             <ul className="flex flex-col items-center max-w-fit-content">
               <li className="text-dark hover:text-dark text-center">

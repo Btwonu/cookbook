@@ -51,7 +51,7 @@ const Header = () => {
         </nav>
 
         {user ? (
-          <AvatarButton />
+          <ThemeToggle />
         ) : (
           <Link
             to="/auth"

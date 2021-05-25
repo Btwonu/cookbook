@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
