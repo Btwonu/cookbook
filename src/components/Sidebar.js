@@ -35,7 +35,7 @@ const Sidebar = ({ history }) => {
   };
 
   return (
-    <nav className="text-dark hidden md:block shadow flex flex-col p-4">
+    <nav className="text-dark hidden md:block flex flex-col p-4">
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
         <header>
           <h2 className="text-center text-xl font-bold pb-2">Username</h2>

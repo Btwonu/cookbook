@@ -1,5 +1,5 @@
 const Aside = () => {
-  return <>aside</>;
+  return <aside className="hidden xl:block">aside</aside>;
 };
 
 export default Aside;

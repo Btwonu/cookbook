@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 import HolyGrail from './layouts/HolyGrail';
-import RecipeCardList from '../components/recipeCardList';
+import RecipeCard from '../components/RecipeCard';
 import Sidebar from '../components/Sidebar';
 import Aside from '../components/Aside';
 import recipeService from '../services/recipeService';
@@ -18,13 +18,15 @@ const Recipes = () => {
       .catch(console.error);
   }, []);
 
+  const recipeList = recipes.map((recipe) => (
+    <RecipeCard key={recipe._id} {...recipe} />
+  ));
+
   return (
     <HolyGrail>
-      <main className="flex">
-        <Sidebar />
-        <article className="flex-1">
-          {recipes ? <RecipeCardList recipes={recipes} /> : null}
-        </article>
+      <Sidebar />
+      <main className="flex flex-wrap m-4 shadow">
+        {recipes ? recipeList : null}
       </main>
       <Aside />
     </HolyGrail>

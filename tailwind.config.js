@@ -22,6 +22,10 @@ module.exports = {
         light: 'var(--color-light)',
         dark: 'var(--color-dark)', // #1c0f30 || #1f1235
       },
+      gridTemplateColumns: {
+        'grail-md': '300px 5fr',
+        'grail-xl': '240px 2fr 1fr',
+      },
       maxWidth: {
         'fit-content': 'fit-content',
       },

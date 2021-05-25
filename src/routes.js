@@ -12,30 +12,30 @@ import RecipeDetails from './components/RecipeDetails';
 
 export const AuthenticatedRoutes = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <ThemeProvider>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Switch>
           <Route exact path="/recipes" component={Recipes} />
           <Route exact path="/recipes/create" component={CreateRecipe} />
           <Route exact path="/recipes/one" component={RecipeDetails} />
           <Route exact path="/about" component={About} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route path="/" component={Recipes} />
-        </ThemeProvider>
-      </Switch>
-    </BrowserRouter>
+          <Route component={Recipes} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 export const UnauthenticatedRoutes = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <ThemeProvider>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/auth" component={Auth} />
-          <Route path="/" component={Auth} />
-        </ThemeProvider>
-      </Switch>
-    </BrowserRouter>
+          <Route component={Auth} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
