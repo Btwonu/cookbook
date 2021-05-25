@@ -9,6 +9,7 @@ import {
   MdInput,
   MdFavoriteBorder,
   MdExpandMore,
+  MdAdd,
 } from 'react-icons/md';
 
 import { useAuth } from '../contexts/AuthContext';
@@ -77,6 +78,11 @@ const Sidebar = ({ history }) => {
               <MdFavoriteBorder />
               Favorite Recipes
               <MdExpandMore className="ml-2" />
+            </MenuItem>
+
+            <MenuItem linkTo="/recipes/create">
+              <MdAdd />
+              Create Recipe
             </MenuItem>
           </ul>
 
