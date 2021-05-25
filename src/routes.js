@@ -15,13 +15,12 @@ export const AuthenticatedRoutes = () => {
     <BrowserRouter>
       <Switch>
         <ThemeProvider>
-          <Route exact path="/" component={Recipes} />
           <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/auth" component={Auth} />
           <Route exact path="/recipes/create" component={CreateRecipe} />
           <Route exact path="/recipes/one" component={RecipeDetails} />
           <Route exact path="/about" component={About} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route path="/" component={Recipes} />
         </ThemeProvider>
       </Switch>
     </BrowserRouter>
@@ -34,6 +33,7 @@ export const UnauthenticatedRoutes = () => {
         <ThemeProvider>
           <Route exact path="/" component={Landing} />
           <Route exact path="/auth" component={Auth} />
+          <Route path="/" component={Auth} />
         </ThemeProvider>
       </Switch>
     </BrowserRouter>
