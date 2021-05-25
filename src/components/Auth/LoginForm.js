@@ -10,6 +10,7 @@ const LoginForm = ({ setSelectedForm, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     login(username, password).then((res) => {
       updateUser();
       history.push('/');

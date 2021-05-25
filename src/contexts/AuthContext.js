@@ -25,10 +25,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = (username, password) => {
+    const data = { username, password };
+
     return axios({
       method: 'POST',
       url: '/auth/login',
-      data: { username, password },
+      data,
     })
       .then((res) => {
         console.log('Logged in through form');
@@ -40,12 +42,27 @@ export const AuthProvider = ({ children }) => {
     return axios.get('/auth/logout');
   };
 
+  const register = (username, email, password, confirmPassword) => {
+    const data = { username, email, password, confirmPassword };
+
+    return axios({
+      method: 'POST',
+      url: '/auth/register',
+      data,
+    })
+      .then((res) => {
+        console.log('Registered through form');
+      })
+      .catch(console.error);
+  };
+
   const contextValue = {
     user,
     setUser,
-    login,
     updateUser,
+    login,
     logout,
+    register,
   };
 
   return (

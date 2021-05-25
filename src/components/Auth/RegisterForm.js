@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
-const RegisterForm = ({ setSelectedForm }) => {
+const RegisterForm = ({ history, setSelectedForm }) => {
+  const { register, updateUser } = useAuth();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,22 +12,11 @@ const RegisterForm = ({ setSelectedForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const credentials = { username, email, password, confirmPassword };
 
-    axios({
-      method: 'POST',
-      url: '/auth/register',
-      data: credentials,
-    })
-      .then((res) => {
-        console.log('User created');
-
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-      })
-      .catch(console.error);
+    register(username, email, password, confirmPassword).then((res) => {
+      updateUser();
+      history.push('/');
+    });
   };
 
   return (
@@ -109,4 +101,4 @@ const RegisterForm = ({ setSelectedForm }) => {
   );
 };
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
