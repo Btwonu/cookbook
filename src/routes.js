@@ -8,7 +8,7 @@ import CreateRecipe from './pages/CreateRecipe';
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 
-import RecipeDetails from './components/RecipeDetails';
+import RecipeDetails from './pages/RecipeDetails';
 
 export const AuthenticatedRoutes = () => {
   return (
@@ -17,7 +17,7 @@ export const AuthenticatedRoutes = () => {
         <Switch>
           <Route exact path="/recipes" component={Recipes} />
           <Route exact path="/recipes/create" component={CreateRecipe} />
-          <Route exact path="/recipes/one" component={RecipeDetails} />
+          <Route exact path="/recipes/:recipeId" component={RecipeDetails} />
           <Route exact path="/about" component={About} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route component={Recipes} />
