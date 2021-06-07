@@ -4,6 +4,10 @@ const getAll = () => {
   return axios({ method: 'GET', url: '/recipes' });
 };
 
+const getOne = (recipeId) => {
+  return axios({ method: 'GET', url: `/recipes/${recipeId}` });
+};
+
 const createOne = (recipe) => {
   return axios({
     method: 'POST',
@@ -15,6 +19,7 @@ const createOne = (recipe) => {
 const recipeService = {
   getAll,
   createOne,
+  getOne,
 };
 
 export default recipeService;
