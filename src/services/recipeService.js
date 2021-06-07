@@ -5,7 +5,6 @@ const getAll = () => {
 };
 
 const createOne = (recipe) => {
-  // console.log(typeof recipe);
   return axios({
     method: 'POST',
     url: '/recipes',

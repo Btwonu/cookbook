@@ -1,11 +1,7 @@
 import { useRef } from 'react';
-
 import EditorJs from 'react-editor-js';
-
 import { EDITOR_JS_TOOLS } from './constants';
-
 import './styles.scss';
-
 import recipeService from '../../services/recipeService';
 
 const Editor = ({ data }) => {
