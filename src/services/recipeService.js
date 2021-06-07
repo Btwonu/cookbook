@@ -16,10 +16,15 @@ const createOne = (recipe) => {
   });
 };
 
+const editOne = () => {
+  console.log('Editing...');
+};
+
 const recipeService = {
   getAll,
   createOne,
   getOne,
+  editOne,
 };
 
 export default recipeService;

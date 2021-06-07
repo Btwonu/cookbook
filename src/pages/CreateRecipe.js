@@ -1,6 +1,8 @@
 import Layout from '../pages/layouts/Layout';
 import Editor from '../components/Editor/Editor';
 
+import recipeService from '../services/recipeService';
+
 // const DATA = `{"time":1621261671717,"blocks":[{"id":"ra-vXMnMLo","type":"paragraph","data":{"text":"Start editing..."}}],"version":"2.21.0"}`;
 
 const DATA = {
@@ -63,10 +65,18 @@ const DATA = {
 };
 
 const CreateRecipe = () => {
+  const createRecipeHandler = (editorInstance) => {
+    editorInstance.current
+      .save()
+      .then((output) => recipeService.createOne(output))
+      .then((res) => console.log(res))
+      .catch(console.error);
+  };
+
   return (
     <Layout>
       <h2 className="text-center text-2xl p-6">Share your recipe</h2>
-      <Editor data={DATA} />
+      <Editor data={DATA} mode="create" editorHandler={createRecipeHandler} />
     </Layout>
   );
 };
