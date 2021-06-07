@@ -2,7 +2,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 
-import AvatarButton from './AvatarButton';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
 
 const Header = () => {

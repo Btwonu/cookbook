@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import HolyGrail from './layouts/HolyGrail';
 import RecipeCard from '../components/RecipeCard';

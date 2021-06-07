@@ -14,6 +14,8 @@ import Delimiter from '@editorjs/delimiter';
 import InlineCode from '@editorjs/inline-code';
 import SimpleImage from '@editorjs/simple-image';
 
+import { uploadByFile } from '../../utils/editorUploaders';
+
 export const EDITOR_JS_TOOLS = {
   embed: Embed,
   table: Table,
@@ -22,7 +24,14 @@ export const EDITOR_JS_TOOLS = {
   warning: Warning,
   code: Code,
   linkTool: LinkTool,
-  image: Image,
+  image: {
+    class: Image,
+    config: {
+      uploader: {
+        uploadByFile,
+      },
+    },
+  },
   raw: Raw,
   header: Header,
   quote: Quote,
