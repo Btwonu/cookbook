@@ -3,6 +3,7 @@ label.switch {
 }
 
 [role='switch'] {
+  font-size: 0.9rem;
   padding: 0;
   margin-left: 1rem;
   width: 3.4rem;
@@ -19,7 +20,7 @@ label.switch {
 }
 
 [role='switch'] span {
-  padding: 0.2px 1px;
+  padding: 0.4px 1px;
   color: #fff;
   margin: 1px;
   pointer-events: none;
