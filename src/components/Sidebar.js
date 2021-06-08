@@ -26,7 +26,7 @@ const MenuItem = ({ linkTo, children, handler }) => {
 
 const Sidebar = ({ history }) => {
   const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
-  const { logout, updateUser } = useAuth();
+  const { user, logout, updateUser } = useAuth();
 
   const openFavoriteMenu = (e) => {
     e.preventDefault();
@@ -49,7 +49,9 @@ const Sidebar = ({ history }) => {
     <nav className="text-dark hidden md:block flex flex-col p-4">
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
         <header>
-          <h2 className="text-center text-xl font-bold pb-2">Username</h2>
+          <h2 className="text-center text-xl font-bold pb-2">
+            {user.username}
+          </h2>
           <img
             src={userAvatar}
             className="rounded-full m-auto w-3/6 py-4"

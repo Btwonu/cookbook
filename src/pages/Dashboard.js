@@ -5,8 +5,11 @@ import { useAuth } from '../contexts/AuthContext';
 const Dashboard = () => {
   const { user } = useAuth();
 
-  console.log(user);
-  return <Layout>Dashboard</Layout>;
+  return (
+    <Layout>
+      <h2 className="text-center text-lg p-4">Hello, {user.username}</h2>
+    </Layout>
+  );
 };
 
 export default Dashboard;
