@@ -1,25 +1,13 @@
-import { useState, useEffect } from 'react';
-
 import Layout from '../pages/layouts/Layout';
 import Editor from '../components/Editor/Editor';
 
 import recipeService from '../services/recipeService';
+import useRecipeRequest from '../hooks/useRecipeRequest';
 
 const RecipeDetails = ({ match }) => {
-  const [editorData, setEditorData] = useState(null);
-  const [isCreator, setIsCreator] = useState(false);
-  let { recipeId } = match.params;
+  const { recipeId } = match.params;
 
-  useEffect(() => {
-    console.log(editorData);
-    recipeService
-      .getOne(recipeId)
-      .then((res) => {
-        setIsCreator(res.data.isCreator);
-        setEditorData(res.data.editorData);
-      })
-      .catch(console.error);
-  }, []);
+  const [editorData, isCreator] = useRecipeRequest(recipeId);
 
   const editRecipeHandler = () => {
     recipeService.editOne();
