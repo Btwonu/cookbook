@@ -1,11 +1,12 @@
 import placeholderImage from '../assets/images/recipe-placeholder.jpg';
+import FavoriteIcon from './FavoriteIcon';
 
 const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
   return (
     <article className="lg:w-1/2 p-4">
-      <a
-        href={`/recipes/${recipeId}`}
-        className="block bg-main h-full flex flex-col justify-between border p-6 rounded-lg"
+      <div
+        // href={`/recipes/${recipeId}`}
+        className="block bg-main h-full flex flex-col justify-between border p-6 rounded-lg cursor-default"
       >
         {imageUrl ? (
           <img
@@ -30,10 +31,11 @@ const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
         <p className="text-dark mb-4">
           {summary && summary.slice(0, 60) + '...'}
         </p>
-        <p className="creator text-dark">
-          by chef <span className="font-semibold">{creator}</span>
+        <p className="creator text-dark flex justify-between gap-4">
+          by chef <span className="font-semibold flex-grow">{creator}</span>
+          <FavoriteIcon />
         </p>
-      </a>
+      </div>
     </article>
   );
 };

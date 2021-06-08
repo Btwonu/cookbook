@@ -45,7 +45,7 @@ const Footer = () => {
       </IconContext.Provider>
 
       <hr className="border-t border-gray-300 w-3/4 m-auto" />
-      <p className="text-center py-2">&#169; 2021 Recipe App</p>
+      <p className="text-center py-2">&#169; 2021 Cookbook App</p>
     </footer>
   );
 };

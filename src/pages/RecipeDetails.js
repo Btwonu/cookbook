@@ -3,6 +3,7 @@ import Editor from '../components/Editor/Editor';
 
 import recipeService from '../services/recipeService';
 import useRecipeRequest from '../hooks/useRecipeRequest';
+import Spacer from '../components/Spacer';
 
 const RecipeDetails = ({ match }) => {
   const { recipeId } = match.params;
@@ -23,6 +24,7 @@ const RecipeDetails = ({ match }) => {
           editorHandler={editRecipeHandler}
         />
       )}
+      <Spacer y={4} />
     </Layout>
   );
 };
