@@ -6,7 +6,7 @@ import Recipes from './pages/Recipes';
 import Auth from './pages/Auth';
 import CreateRecipe from './pages/CreateRecipe';
 import About from './pages/About';
-import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 import RecipeDetails from './pages/RecipeDetails';
 
@@ -19,7 +19,7 @@ export const AuthenticatedRoutes = () => {
           <Route exact path="/recipes/create" component={CreateRecipe} />
           <Route exact path="/recipes/:recipeId" component={RecipeDetails} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/profile" component={Profile} />
           <Route component={Recipes} />
         </Switch>
       </BrowserRouter>
