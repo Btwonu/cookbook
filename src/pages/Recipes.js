@@ -13,6 +13,8 @@ const Recipes = () => {
   const { user } = useAuth();
 
   console.log({ user });
+  console.log(user.favoriteRecipes);
+
   useEffect(() => {
     recipeService
       .getAll()
@@ -22,9 +24,18 @@ const Recipes = () => {
       .catch(console.error);
   }, []);
 
-  const recipeList = recipes.map((recipe) => (
-    <RecipeCard key={recipe._id} recipeId={recipe._id} {...recipe} />
-  ));
+  const recipeList = recipes.map((recipe) => {
+    let isFavorited = user.favoriteRecipes.includes(recipe._id);
+
+    return (
+      <RecipeCard
+        key={recipe._id}
+        recipeId={recipe._id}
+        favorite={isFavorited}
+        {...recipe}
+      />
+    );
+  });
 
   return (
     <HolyGrail>

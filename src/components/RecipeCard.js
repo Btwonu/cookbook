@@ -1,7 +1,42 @@
+import { useState } from 'react';
 import placeholderImage from '../assets/images/recipe-placeholder.jpg';
 import FavoriteIcon from './FavoriteIcon';
 
-const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
+import axios from 'axios';
+
+const RecipeCard = ({
+  recipeId,
+  header,
+  imageUrl,
+  creator,
+  summary,
+  favorite,
+}) => {
+  const [isFavorited, setIsFavorited] = useState(favorite);
+
+  const addToFavorites = (e) => {
+    e.preventDefault();
+    console.log('adding..');
+
+    axios({ method: 'POST', url: `/favorites/${recipeId}` })
+      .then((res) => {
+        console.log(res.data);
+        setIsFavorited(true);
+      })
+      .catch(console.error);
+  };
+
+  const removeFromFavorites = (e) => {
+    e.preventDefault();
+    console.log('removing..');
+    axios({ method: 'DELETE', url: `/favorites/${recipeId}` })
+      .then((res) => {
+        console.log(res.data);
+        setIsFavorited(false);
+      })
+      .catch(console.error);
+  };
+
   return (
     <article className="lg:w-1/2 p-4">
       <a
@@ -33,7 +68,11 @@ const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
         </p>
         <p className="creator text-dark flex justify-between gap-4">
           by chef <span className="font-semibold flex-grow">{creator}</span>
-          <FavoriteIcon recipeId={recipeId} />
+          <FavoriteIcon
+            isFavorited={isFavorited}
+            addToFavorites={addToFavorites}
+            removeFromFavorites={removeFromFavorites}
+          />
         </p>
       </a>
     </article>
