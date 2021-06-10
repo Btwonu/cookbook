@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -42,6 +44,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  @apply font-text;
+}
+
+.navigation,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading;
 }
 
 body {

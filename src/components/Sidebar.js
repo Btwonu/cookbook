@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import userAvatar from '../assets/images/avatars/av-0.svg';
 import {
@@ -8,34 +7,14 @@ import {
   MdTimer,
   MdInput,
   MdFavoriteBorder,
-  MdExpandMore,
   MdAdd,
 } from 'react-icons/md';
+import MenuItem from './MenuItem';
 
 import { useAuth } from '../contexts/AuthContext';
 
-const MenuItem = ({ linkTo, children, handler }) => {
-  return (
-    <li onClick={handler}>
-      <Link className="flex items-center p-2 hover:bg-primary" to={linkTo}>
-        {children}
-      </Link>
-    </li>
-  );
-};
-
 const Sidebar = ({ history }) => {
-  const [favoriteMenuOpened, setFavoriteMenuOpened] = useState(false);
   const { user, logout, updateUser } = useAuth();
-
-  const openFavoriteMenu = (e) => {
-    e.preventDefault();
-    if (favoriteMenuOpened) {
-      setFavoriteMenuOpened(false);
-    } else {
-      setFavoriteMenuOpened(true);
-    }
-  };
 
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -45,13 +24,14 @@ const Sidebar = ({ history }) => {
     });
   };
 
-  const userFavoriteRecipesList = user.favoriteRecipes.map(
-    ({ _id, header }) => (
-      <li key={_id} className="text-dark hover:text-dark text-center">
-        <a href={`/recipes/${_id}`}>{header}</a>
-      </li>
-    )
-  );
+  const userFavoriteRecipesList = user.favoriteRecipes.map(({ _id, title }) => (
+    <li
+      key={_id}
+      className="text-dark hover:text-dark leading-8 hover:underline"
+    >
+      <a href={`/recipes/${_id}`}>{title}</a>
+    </li>
+  ));
 
   return (
     <nav className="text-dark hidden md:block flex flex-col p-4">
@@ -88,18 +68,15 @@ const Sidebar = ({ history }) => {
               <MdAdd />
               Create Recipe
             </MenuItem>
-            <MenuItem linkTo="/" handler={openFavoriteMenu}>
+            <MenuItem
+              linkTo="/"
+              isDropdown
+              menuItemList={userFavoriteRecipesList}
+            >
               <MdFavoriteBorder />
               Favorite Recipes
-              <MdExpandMore className="ml-2" />
             </MenuItem>
           </ul>
-
-          {favoriteMenuOpened ? (
-            <ul className="flex flex-col items-center max-w-fit-content">
-              {userFavoriteRecipesList}
-            </ul>
-          ) : null}
         </section>
         <hr />
         <footer>
