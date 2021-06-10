@@ -25,7 +25,9 @@ const Recipes = () => {
   }, []);
 
   const recipeList = recipes.map((recipe) => {
-    let isFavorited = user.favoriteRecipes.includes(recipe._id);
+    let isFavorited = user.favoriteRecipes.some(
+      (favRecipe) => favRecipe._id === recipe._id
+    );
 
     return (
       <RecipeCard

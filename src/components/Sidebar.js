@@ -45,6 +45,14 @@ const Sidebar = ({ history }) => {
     });
   };
 
+  const userFavoriteRecipesList = user.favoriteRecipes.map(
+    ({ _id, header }) => (
+      <li key={_id} className="text-dark hover:text-dark text-center">
+        <a href={`/recipes/${_id}`}>{header}</a>
+      </li>
+    )
+  );
+
   return (
     <nav className="text-dark hidden md:block flex flex-col p-4">
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
@@ -76,35 +84,20 @@ const Sidebar = ({ history }) => {
               Settings
             </MenuItem>
 
+            <MenuItem linkTo="/recipes/create">
+              <MdAdd />
+              Create Recipe
+            </MenuItem>
             <MenuItem linkTo="/" handler={openFavoriteMenu}>
               <MdFavoriteBorder />
               Favorite Recipes
               <MdExpandMore className="ml-2" />
             </MenuItem>
-
-            <MenuItem linkTo="/recipes/create">
-              <MdAdd />
-              Create Recipe
-            </MenuItem>
           </ul>
 
           {favoriteMenuOpened ? (
             <ul className="flex flex-col items-center max-w-fit-content">
-              <li className="text-dark hover:text-dark text-center">
-                <a href="/placeholder">On this page we’ve learned about</a>
-              </li>
-              <li className="text-dark hover:text-dark text-center">
-                <a href="/placeholder">On this page we’ve learned about</a>
-              </li>
-              <li className="text-dark hover:text-dark text-center">
-                <a href="/placeholder">On this page we’ve learned about</a>
-              </li>
-              <li className="text-dark hover:text-dark text-center">
-                <a href="/placeholder">On this page we’ve learned about</a>
-              </li>
-              <li className="text-dark hover:text-dark text-center">
-                <a href="/placeholder">On this page we’ve learned about</a>
-              </li>
+              {userFavoriteRecipesList}
             </ul>
           ) : null}
         </section>
