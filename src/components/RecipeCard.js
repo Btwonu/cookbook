@@ -4,9 +4,9 @@ import FavoriteIcon from './FavoriteIcon';
 const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
   return (
     <article className="lg:w-1/2 p-4">
-      <div
-        // href={`/recipes/${recipeId}`}
-        className="block bg-main h-full flex flex-col justify-between border p-6 rounded-lg cursor-default"
+      <a
+        href={`/recipes/${recipeId}`}
+        className="block bg-main h-full flex flex-col justify-between border p-6 rounded-lg cursor-default hover:underline"
       >
         {imageUrl ? (
           <img
@@ -33,9 +33,9 @@ const RecipeCard = ({ recipeId, header, imageUrl, creator, summary }) => {
         </p>
         <p className="creator text-dark flex justify-between gap-4">
           by chef <span className="font-semibold flex-grow">{creator}</span>
-          <FavoriteIcon />
+          <FavoriteIcon recipeId={recipeId} />
         </p>
-      </div>
+      </a>
     </article>
   );
 };

@@ -25,7 +25,7 @@ const useRecipeRequest = (recipeId) => {
       });
 
     return () => source.cancel('I canceled it');
-  }, [recipeId, source]);
+  }, [recipeId]);
 
   return [editorData, isCreator];
 };

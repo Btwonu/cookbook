@@ -6,9 +6,13 @@ import Sidebar from '../components/Sidebar';
 import Aside from '../components/Aside';
 import recipeService from '../services/recipeService';
 
+import { useAuth } from '../contexts/AuthContext';
+
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
+  const { user } = useAuth();
 
+  console.log({ user });
   useEffect(() => {
     recipeService
       .getAll()
