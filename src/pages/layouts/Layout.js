@@ -5,7 +5,9 @@ const Layout = (props) => {
   return (
     <div className="layout h-screen">
       <Header />
-      <div className="bg-light">{props.children}</div>
+      <div className="bg-light">
+        <main className="container mx-auto">{props.children}</main>
+      </div>
       <Footer />
     </div>
   );

@@ -18,7 +18,7 @@ const Header = () => {
           Cookbook
         </Link>
 
-        <nav className="mx-auto flex flex-wrap items-center text-base justify-center">
+        <nav className="mx-auto flex flex-wrap items-center text-base justify-center navigation">
           {user && (
             <>
               <Link
@@ -34,16 +34,16 @@ const Header = () => {
                 Recipes
               </Link>
               <Link
+                to="/profile"
+                className="mr-5 hover:text-accentDark cursor-pointer"
+              >
+                Profile
+              </Link>
+              <Link
                 to="/about"
                 className="mr-5 hover:text-accentDark cursor-pointer"
               >
                 About
-              </Link>
-              <Link
-                to="/dashboard"
-                className="mr-5 hover:text-accentDark cursor-pointer"
-              >
-                Dashboard
               </Link>
             </>
           )}

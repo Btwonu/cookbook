@@ -10,7 +10,10 @@ module.exports = {
     //   light: '#fdfdfd',
     //   dark: '#e3342f',
     // }),
-
+    fontFamily: {
+      heading: ['Raleway', 'sans-serif'],
+      text: ['Open Sans', 'ui-sans-serif', 'system-ui'],
+    },
     extend: {
       colors: {
         primary: 'var(--color-primary)',

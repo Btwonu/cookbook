@@ -12,9 +12,6 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const { user } = useAuth();
 
-  console.log({ user });
-  console.log(user.favoriteRecipes);
-
   useEffect(() => {
     recipeService
       .getAll()
