@@ -16,7 +16,7 @@ const RecipeDetails = ({ match }) => {
 
   return (
     <Layout>
-      <h2 className="text-center text-2xl p-6">Recipe Details</h2>;
+      <h2 className="text-center text-2xl p-6">Recipe Details</h2>
       {editorData && (
         <Editor
           data={editorData}

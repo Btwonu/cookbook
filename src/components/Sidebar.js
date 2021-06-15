@@ -12,9 +12,17 @@ import {
 import MenuItem from './MenuItem';
 
 import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
 
 const Sidebar = ({ history }) => {
   const { user, logout, updateUser } = useAuth();
+  const { isOpened } = useSidebar();
+
+  if (isOpened) {
+    console.log('yee');
+  } else {
+    console.log('nyee');
+  }
 
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -30,8 +38,10 @@ const Sidebar = ({ history }) => {
     </li>
   ));
 
+  let navClasses = 'md:block flex flex-col p-4';
+
   return (
-    <nav className="hidden md:block flex flex-col p-4">
+    <nav className={isOpened ? navClasses : 'hidden ' + navClasses}>
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
         <header>
           <h2 className="text-center text-xl font-bold pb-2">
@@ -45,7 +55,7 @@ const Sidebar = ({ history }) => {
           <hr />
         </header>
         <section>
-          <ul>
+          <ul className="relative inline-block left-1/2 transform -translate-x-1/2">
             <MenuItem linkTo="/stopwatch">
               <MdTimer />
               Stopwatch

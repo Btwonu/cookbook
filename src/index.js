@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './contexts/AuthContext';
+import { SidebarProvider } from './contexts/SidebarContext';
 import './css/main.scss';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <SidebarProvider>
+        <App />
+      </SidebarProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

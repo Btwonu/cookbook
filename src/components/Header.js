@@ -1,4 +1,5 @@
 import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
 import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 
@@ -6,11 +7,15 @@ import ThemeToggle from './ThemeToggle/ThemeToggle';
 
 const Header = () => {
   const { user } = useAuth();
+  const { toggleSidebar } = useSidebar();
 
   return (
-    <header className="bg-primary text-dark">
+    <header className="bg-primary">
       <div className="container mx-auto flex p-5  items-center">
-        <MdMenu className="cursor-pointer text-2xl md:invisible" />
+        <MdMenu
+          className="cursor-pointer text-2xl md:invisible"
+          onClick={() => toggleSidebar()}
+        />
         <Link
           to="/"
           className="title-font font-medium ml-3 text-xl hover:text-secondary cursor-pointer"

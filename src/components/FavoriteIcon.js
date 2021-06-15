@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
