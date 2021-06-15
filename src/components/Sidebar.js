@@ -25,16 +25,13 @@ const Sidebar = ({ history }) => {
   };
 
   const userFavoriteRecipesList = user.favoriteRecipes.map(({ _id, title }) => (
-    <li
-      key={_id}
-      className="text-dark hover:text-dark leading-8 hover:underline"
-    >
+    <li key={_id} className="leading-8 hover:underline">
       <a href={`/recipes/${_id}`}>{title}</a>
     </li>
   ));
 
   return (
-    <nav className="text-dark hidden md:block flex flex-col p-4">
+    <nav className="hidden md:block flex flex-col p-4">
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
         <header>
           <h2 className="text-center text-xl font-bold pb-2">

@@ -2,14 +2,6 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    // backgroundColor: (theme) => ({
-    //   ...theme('colors'),
-    //   main: '#D47163',
-    //   accent: '#8382A4',
-    //   accentDark: '#95474C',
-    //   light: '#fdfdfd',
-    //   dark: '#e3342f',
-    // }),
     fontFamily: {
       heading: ['Raleway', 'sans-serif'],
       text: ['Open Sans', 'ui-sans-serif', 'system-ui'],
@@ -21,9 +13,9 @@ module.exports = {
         secondary: 'var(--color-secondary)',
         secondaryHovered: 'var(--color-secondary-hovered)',
         accent: 'var(--color-accent)',
-        accentHovered: 'var(--color-accent-hovered)', // #331e54 || #301e4e || #361a5e
+        accentHovered: 'var(--color-accent-hovered)',
         light: 'var(--color-light)',
-        dark: 'var(--color-dark)', // #1c0f30 || #1f1235
+        dark: 'var(--color-dark)',
       },
       gridTemplateColumns: {
         'grail-md': '300px 5fr',
