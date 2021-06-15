@@ -16,6 +16,7 @@ module.exports = {
         accentHovered: 'var(--color-accent-hovered)',
         light: 'var(--color-light)',
         dark: 'var(--color-dark)',
+        transparent: 'var(--color-transparent)',
       },
       gridTemplateColumns: {
         'grail-md': '300px 5fr',

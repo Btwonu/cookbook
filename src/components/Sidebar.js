@@ -26,7 +26,7 @@ const Sidebar = ({ history }) => {
     });
   };
 
-  const userFavoriteRecipesList = user.favoriteRecipes.map(({ _id, title }) => (
+  const userFavoriteRecipeList = user.favoriteRecipes.map(({ _id, title }) => (
     <li key={_id} className="leading-8 hover:underline">
       <a href={`/recipes/${_id}`}>{title}</a>
     </li>
@@ -72,7 +72,7 @@ const Sidebar = ({ history }) => {
             <MenuItem
               linkTo="/"
               isDropdown
-              menuItemList={userFavoriteRecipesList}
+              menuItemList={userFavoriteRecipeList}
             >
               <MdFavoriteBorder />
               Favorite Recipes
