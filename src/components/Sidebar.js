@@ -18,12 +18,6 @@ const Sidebar = ({ history }) => {
   const { user, logout, updateUser } = useAuth();
   const { isOpened } = useSidebar();
 
-  if (isOpened) {
-    console.log('yee');
-  } else {
-    console.log('nyee');
-  }
-
   const logoutHandler = (e) => {
     e.preventDefault();
     logout().then(() => {

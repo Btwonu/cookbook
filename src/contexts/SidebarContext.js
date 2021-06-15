@@ -4,7 +4,6 @@ export const SidebarContext = createContext();
 
 export const SidebarProvider = ({ children }) => {
   const [isOpened, setIsOpened] = useState(true);
-  console.log({ isOpened });
 
   const toggleSidebar = () => {
     setIsOpened(isOpened ? false : true);
