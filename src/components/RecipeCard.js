@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+
 import placeholderImage from '../assets/images/recipe-placeholder.jpg';
 import FavoriteIcon from './FavoriteIcon';
 
@@ -13,6 +15,7 @@ const RecipeCard = ({
   favorite,
 }) => {
   const [isFavorited, setIsFavorited] = useState(favorite);
+  const { updateUser } = useAuth();
 
   const addToFavorites = (e) => {
     e.preventDefault();
@@ -22,6 +25,7 @@ const RecipeCard = ({
       .then((res) => {
         console.log(res.data);
         setIsFavorited(true);
+        updateUser().then((r) => console.log('updated user'));
       })
       .catch(console.error);
   };
@@ -31,8 +35,8 @@ const RecipeCard = ({
     console.log('removing..');
     axios({ method: 'DELETE', url: `/favorites/${recipeId}` })
       .then((res) => {
-        console.log(res.data);
         setIsFavorited(false);
+        updateUser().then((r) => console.log('updated user'));
       })
       .catch(console.error);
   };
