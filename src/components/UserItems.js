@@ -2,13 +2,12 @@ import Button from './Button';
 import Spacer from './Spacer';
 import Avatar from './Avatar';
 import MenuItem from './MenuItem';
-import maleAvatar from '../assets/images/avatars/av-default-male.svg';
 
-const UserItems = ({ favoriteRecipeList, openModalHandler }) => {
+const UserItems = ({ avatarSrc, favoriteRecipeList, openModalHandler }) => {
   return (
     <article className="flex flex-col">
       <div className="h-24 inline-block">
-        <Avatar src={maleAvatar} />
+        <Avatar src={avatarSrc} />
       </div>
       <Spacer y={1} />
       <Button className="m-auto" onClick={openModalHandler}>

@@ -42,12 +42,12 @@ const Sidebar = ({ history }) => {
             {user.username}
           </h2>
           <img
-            src={userAvatar}
+            src={user.avatar.url}
             className="rounded-full m-auto w-3/6 py-4"
             alt="User avatar"
           />
-          <hr />
         </header>
+        <hr />
         <section>
           <ul className="relative inline-block left-1/2 transform -translate-x-1/2">
             <MenuItem linkTo="/stopwatch">

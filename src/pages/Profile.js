@@ -10,10 +10,6 @@ const Profile = () => {
   const [modalIsOpened, setModalIsOpened] = useState(false);
   const { user } = useAuth();
 
-  const handler = () => {
-    console.log('stored');
-  };
-
   const openModal = (e) => {
     e.preventDefault();
     setModalIsOpened(true);
@@ -37,8 +33,9 @@ const Profile = () => {
 
       <h2 className="text-center text-lg p-4">Hello, {user.username}</h2>
       <UserItems
-        openModalHandler={openModal}
+        avatarSrc={user.avatar.url}
         favoriteRecipeList={userFavoriteRecipeList}
+        openModalHandler={openModal}
       />
     </Layout>
   );

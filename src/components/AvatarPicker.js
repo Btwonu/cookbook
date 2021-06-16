@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { useAuth } from '../contexts/AuthContext';
+
 import AvatarList from './AvatarList';
 import Button from './Button';
 
 const AvatarPicker = () => {
   const [avatarList, setAvatarList] = useState([]);
-  const [activeAvatar, setActiveAvatar] = useState(null);
+  const [activeAvatar, setActiveAvatar] = useState(0);
+  const { user, updateUser } = useAuth();
 
   useEffect(() => {
-    axios('/images')
+    axios('/images/avatars')
       .then((res) => setAvatarList(res.data.resources))
       .catch(console.error);
   }, []);
@@ -19,7 +22,27 @@ const AvatarPicker = () => {
   };
 
   const pickAvatar = () => {
-    console.log(activeAvatar);
+    const pickedIndex = activeAvatar;
+    const { public_id: publicId, url } = avatarList[pickedIndex];
+    const { id: userId, username } = user;
+
+    // store avatar data to db
+    axios({
+      method: 'POST',
+      url: `/users/${username}/avatar`,
+      data: {
+        userId,
+        avatar: {
+          publicId,
+          url,
+        },
+      },
+    })
+      .then((r) => {
+        // update user
+        updateUser();
+      })
+      .catch(console.error);
   };
 
   return (
