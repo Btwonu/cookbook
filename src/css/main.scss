@@ -103,3 +103,9 @@ td > code {
   padding: 0.1rem 0.3rem 0.2rem;
   border-radius: 0.2rem;
 }
+
+.center-absolute {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

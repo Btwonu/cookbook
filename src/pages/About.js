@@ -4,8 +4,8 @@ const About = () => {
   return (
     <Layout>
       <article className="max-w-screen-sm m-auto leading-loose">
-        <h2 className="text-2xl text-center pt-6">About</h2>
-        <p className="p-6">
+        <h2 className="text-2xl text-center mt-6">About</h2>
+        <p className="my-6 px-6">
           Cheese slices who moved my cheese cream cheese. Monterey jack cut the
           cheese cheese on toast lancashire danish fontina blue castello red
           leicester swiss. Manchego brie everyone loves emmental bocconcini
@@ -14,7 +14,7 @@ const About = () => {
           port-salut brie camembert de normandie monterey jack goat cow.
           Lancashire cheesecake smelly cheese.
         </p>
-        <p className="p-6">
+        <p className="my-6 px-6">
           Cauliflower cheese mascarpone melted cheese. Swiss pecorino chalk and
           cheese mascarpone when the cheese comes out everybody's happy parmesan
           airedale cheese triangles. Queso cheesecake stinking bishop fondue
