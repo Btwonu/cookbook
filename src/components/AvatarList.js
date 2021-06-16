@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Avatar from './Avatar';
 
-import zeroAv from '../assets/images/avatars/av-0.svg';
-import femaleAv from '../assets/images/avatars/av-default-female.svg';
-import glassesAv from '../assets/images/avatars/av-glasses.svg';
-
 const AvatarList = () => {
-  const avatarList = [zeroAv, femaleAv, glassesAv];
   const [activeAvatar, setActiveAvatar] = useState(null);
+  const [avatarList, setAvatarList] = useState([]);
+
+  useEffect(() => {
+    axios('/images')
+      .then((res) => setAvatarList(res.data.resources))
+      .catch(console.error);
+  }, []);
 
   const activationHandler = (index) => {
     setActiveAvatar(index);
@@ -28,7 +31,7 @@ const AvatarList = () => {
         className={divClasses}
         onClick={() => activationHandler(index)}
       >
-        <Avatar src={av} />
+        <Avatar src={av.url} />
       </div>
     );
   });

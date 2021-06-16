@@ -60,11 +60,6 @@ const Sidebar = ({ history }) => {
               Food Journal
             </MenuItem>
 
-            <MenuItem linkTo="/settings">
-              <MdSettings />
-              Settings
-            </MenuItem>
-
             <MenuItem linkTo="/recipes/create">
               <MdAdd />
               Create Recipe
