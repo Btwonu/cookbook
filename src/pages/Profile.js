@@ -3,12 +3,16 @@ import { useAuth } from '../contexts/AuthContext';
 import Layout from './layouts/Layout';
 
 import UserItems from '../components/UserItems';
+import AvatarPicker from '../components/AvatarPicker';
 import Modal from '../components/Modal';
-import AvatarList from '../components/AvatarList';
 
 const Profile = () => {
   const [modalIsOpened, setModalIsOpened] = useState(false);
   const { user } = useAuth();
+
+  const handler = () => {
+    console.log('stored');
+  };
 
   const openModal = (e) => {
     e.preventDefault();
@@ -28,9 +32,7 @@ const Profile = () => {
   return (
     <Layout>
       <Modal isOpened={modalIsOpened} closeHandler={closeModal}>
-        <section className="flex flex-wrap items content-start w-full h-full">
-          <AvatarList />
-        </section>
+        <AvatarPicker />
       </Modal>
 
       <h2 className="text-center text-lg p-4">Hello, {user.username}</h2>

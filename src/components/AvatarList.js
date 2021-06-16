@@ -1,22 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
 import Avatar from './Avatar';
 
-const AvatarList = () => {
-  const [activeAvatar, setActiveAvatar] = useState(null);
-  const [avatarList, setAvatarList] = useState([]);
-
-  useEffect(() => {
-    axios('/images')
-      .then((res) => setAvatarList(res.data.resources))
-      .catch(console.error);
-  }, []);
-
-  const activationHandler = (index) => {
-    setActiveAvatar(index);
-  };
-
+const AvatarList = ({ avatarList, activeAvatar, activationHandler }) => {
   return avatarList.map((av, index) => {
     // if currently mapped avatar is set as active from the handler
     const isActive = activeAvatar === index ? true : false;
