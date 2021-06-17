@@ -8,8 +8,10 @@ const AvatarList = ({ avatarList, activeAvatar, activationHandler }) => {
     const isActive = activeAvatar === index ? true : false;
 
     // add an active class
-    let divClasses = 'border w-1/5 h-24 p-1';
-    if (isActive) divClasses += ' border-2 border-green-700';
+    let divClasses = 'border w-2/5 sm:w-1/5 h-24 p-1';
+    if (isActive) {
+      divClasses = divClasses.replace('border', 'border-4 border-accent');
+    }
 
     return (
       <div

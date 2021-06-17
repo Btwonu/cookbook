@@ -13,9 +13,19 @@ const AvatarPicker = () => {
 
   useEffect(() => {
     axios('/images/avatars')
-      .then((res) => setAvatarList(res.data.resources))
+      .then((res) => {
+        setAvatarList(res.data.resources);
+      })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    let index = avatarList.findIndex(
+      (avObj) => avObj.public_id === user.avatar.publicId
+    );
+
+    setActiveAvatar(index);
+  }, [avatarList]);
 
   const activationHandler = (index) => {
     setActiveAvatar(index);
@@ -47,7 +57,7 @@ const AvatarPicker = () => {
 
   return (
     <>
-      <section className="flex flex-wrap items content-start w-full h-5/6">
+      <section className="flex flex-wrap justify-center content-start h-5/6">
         <AvatarList
           avatarList={avatarList}
           activationHandler={activationHandler}

@@ -12,7 +12,6 @@ if (process.env.NODE_ENV === 'development') {
 
 const App = () => {
   const { user } = useAuth();
-  console.log({ user });
 
   return user ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />;
 };
