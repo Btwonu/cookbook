@@ -71,7 +71,8 @@ const RecipeCard = ({
           {summary && summary.slice(0, 60) + '...'}
         </p>
         <p className="creator text-dark flex justify-between gap-4">
-          by chef <span className="font-semibold flex-grow">{creator}</span>
+          by chef{' '}
+          <span className="font-semibold flex-grow">{creator.username}</span>
           <FavoriteIcon
             isFavorited={isFavorited}
             addToFavorites={addToFavorites}
