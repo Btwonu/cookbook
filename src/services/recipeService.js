@@ -20,11 +20,16 @@ const editOne = () => {
   console.log('Editing...');
 };
 
+const deleteOne = (recipeId) => {
+  return axios({ method: 'DELETE', url: `/recipes/${recipeId}` });
+};
+
 const recipeService = {
   getAll,
   createOne,
   getOne,
   editOne,
+  deleteOne,
 };
 
 export default recipeService;

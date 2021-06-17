@@ -1,17 +1,28 @@
 import Layout from '../pages/layouts/Layout';
 import Editor from '../components/Editor/Editor';
+import { withRouter } from 'react-router-dom';
 
 import recipeService from '../services/recipeService';
 import useRecipeRequest from '../hooks/useRecipeRequest';
 import Spacer from '../components/Spacer';
 
-const RecipeDetails = ({ match }) => {
+const RecipeDetails = ({ match, history }) => {
   const { recipeId } = match.params;
 
   const [editorData, isCreator] = useRecipeRequest(recipeId);
 
   const editRecipeHandler = () => {
     recipeService.editOne();
+  };
+
+  const deleteRecipeHandler = () => {
+    recipeService
+      .deleteOne(recipeId)
+      .then((res) => {
+        console.log(res);
+        history.push('/');
+      })
+      .catch(console.error);
   };
 
   return (
@@ -21,7 +32,8 @@ const RecipeDetails = ({ match }) => {
         <Editor
           data={editorData}
           mode={isCreator ? 'edit' : 'preview'}
-          editorHandler={editRecipeHandler}
+          editHandler={editRecipeHandler}
+          deleteHandler={deleteRecipeHandler}
         />
       )}
       <Spacer y={4} />
@@ -29,4 +41,4 @@ const RecipeDetails = ({ match }) => {
   );
 };
 
-export default RecipeDetails;
+export default withRouter(RecipeDetails);

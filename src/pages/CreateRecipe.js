@@ -77,7 +77,7 @@ const CreateRecipe = () => {
   return (
     <Layout>
       <h2 className="text-center text-2xl p-6">Share your recipe</h2>
-      <Editor mode="create" editorHandler={createRecipeHandler} />
+      <Editor mode="create" createHandler={createRecipeHandler} />
       <Spacer y={4} />
     </Layout>
   );

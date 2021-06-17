@@ -65,7 +65,7 @@ const AvatarPicker = () => {
         />
       </section>
       <Button block className="m-auto w-1/2" onClick={pickAvatar}>
-        Store
+        Save
       </Button>
     </>
   );

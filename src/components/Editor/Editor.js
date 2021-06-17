@@ -3,7 +3,9 @@ import EditorJs from 'react-editor-js';
 import { EDITOR_JS_TOOLS } from './constants';
 import './styles.scss';
 
-const Editor = ({ data, mode, editorHandler }) => {
+import Button from '../Button';
+
+const Editor = ({ data, mode, editHandler, createHandler, deleteHandler }) => {
   const editorInstance = useRef();
 
   return (
@@ -16,18 +18,22 @@ const Editor = ({ data, mode, editorHandler }) => {
       />
 
       {mode === 'edit' && (
-        <button
-          className="btn w-4/5 mx-auto md:w-2/3 lg:w-2/4"
-          onClick={() => editorHandler(editorInstance)}
-        >
-          Edit
-        </button>
+        <div className="flex justify-between">
+          {/* <button
+            className="btn w-4/5 mx-auto md:w-2/3 lg:w-2/4"
+            onClick={() => editHandler(editorInstance)}
+          >
+            Edit
+          </button> */}
+          <Button onClick={() => editHandler(editorInstance)}>Save</Button>
+          <Button onClick={deleteHandler}>Delete</Button>
+        </div>
       )}
 
       {mode === 'create' && (
         <button
           className="btn w-4/5 mx-auto md:w-2/3 lg:w-2/4"
-          onClick={() => editorHandler(editorInstance)}
+          onClick={() => createHandler(editorInstance)}
         >
           Create
         </button>
