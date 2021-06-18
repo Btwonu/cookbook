@@ -1,28 +1,35 @@
+import { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-import userAvatar from '../assets/images/avatars/av-0.svg';
+
+import { useAuth } from '../contexts/AuthContext';
+import { useSidebar } from '../contexts/SidebarContext';
+
+import MenuItem from './MenuItem';
+import Spinner from 'react-spinkit';
+import Avatar from './Avatar';
 import {
-  MdSettings,
   MdContentPaste,
   MdTimer,
   MdInput,
   MdFavoriteBorder,
   MdAdd,
 } from 'react-icons/md';
-import MenuItem from './MenuItem';
-
-import { useAuth } from '../contexts/AuthContext';
-import { useSidebar } from '../contexts/SidebarContext';
 
 const Sidebar = ({ history }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { user, logout, updateUser } = useAuth();
   const { isOpened } = useSidebar();
 
   const logoutHandler = (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     logout().then(() => {
-      updateUser();
-      history.push('/');
+      updateUser().then((r) => {
+        setIsLoading(false);
+        history.push('/');
+      });
     });
   };
 
@@ -41,15 +48,18 @@ const Sidebar = ({ history }) => {
           <h2 className="text-center text-xl font-bold pb-2">
             {user.username}
           </h2>
-          <img
+          <p className="w-2/5 sm:w-1/5 md:w-2/5 lg:w-3/5 p-2 m-auto">
+            <Avatar src={user.avatar.url} />
+          </p>
+          {/* <img
             src={user.avatar.url}
             className="rounded-full m-auto w-3/6 py-4"
             alt="User avatar"
-          />
+          /> */}
         </header>
-        <hr />
+        <hr className="w-5/6 m-auto lg:w-full" />
         <section>
-          <ul className="relative inline-block left-1/2 transform -translate-x-1/2">
+          <ul className="w-5/6 relative md:inline-block lg:w-full left-1/2 transform -translate-x-1/2">
             <MenuItem linkTo="/stopwatch">
               <MdTimer />
               Stopwatch
@@ -74,15 +84,22 @@ const Sidebar = ({ history }) => {
             </MenuItem>
           </ul>
         </section>
-        <hr />
+        <hr className="w-5/6 m-auto lg:w-full" />
         <footer>
-          <a
-            href="/logout"
-            className="flex items-center justify-center p-2 hover:bg-primary"
-            onClick={logoutHandler}
-          >
-            <MdInput /> Logout
-          </a>
+          {isLoading ? (
+            <Spinner
+              overrideSpinnerClassName="h-12 text-accent left-1/2 transform translate-y-1/3"
+              name="ball-scale-ripple-multiple"
+            />
+          ) : (
+            <a
+              href="/logout"
+              className="flex items-center justify-center p-2 hover:bg-primary"
+              onClick={logoutHandler}
+            >
+              <MdInput /> Logout
+            </a>
+          )}
         </footer>
       </IconContext.Provider>
     </nav>

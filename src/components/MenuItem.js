@@ -31,7 +31,7 @@ const MenuItem = ({ linkTo, children, isDropdown, menuItemList }) => {
         </Link>
       </li>
       {menuOpened ? (
-        <ul className="flex flex-col items-start max-w-fit-content pl-8">
+        <ul className="flex flex-col items-start max-w-fit-content">
           {menuItemList}
         </ul>
       ) : null}

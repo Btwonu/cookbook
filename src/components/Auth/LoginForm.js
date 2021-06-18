@@ -3,17 +3,23 @@ import { withRouter } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 
+import Spinner from 'react-spinkit';
+
 const LoginForm = ({ setSelectedForm, history }) => {
   const { login, updateUser } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
     login(username, password).then((res) => {
-      updateUser();
-      history.push('/');
+      updateUser().then((r) => {
+        setIsLoading(false);
+        history.push('/');
+      });
     });
   };
 
@@ -67,7 +73,16 @@ const LoginForm = ({ setSelectedForm, history }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="btn">Login</button>
+        {isLoading ? (
+          <p className="h-10">
+            <Spinner
+              overrideSpinnerClassName="text-accent transform translate-y-1/3 left-1/2"
+              name="ball-scale-ripple-multiple"
+            />
+          </p>
+        ) : (
+          <button className="btn">Login</button>
+        )}
       </form>
     </div>
     // </section>
