@@ -25,6 +25,14 @@ const Profile = () => {
     </li>
   ));
 
+  const userCreatedRecipeList = user.createdRecipes.map(({ _id, title }) => {
+    return (
+      <li key={_id} className="leading-8 hover:underline">
+        <a href={`/recipes/${_id}`}>{title}</a>
+      </li>
+    );
+  });
+
   return (
     <Layout>
       <Modal isOpened={modalIsOpened} closeHandler={closeModal}>
@@ -35,6 +43,7 @@ const Profile = () => {
       <UserItems
         avatarSrc={user.avatar.url}
         favoriteRecipeList={userFavoriteRecipeList}
+        createdRecipeList={userCreatedRecipeList}
         openModalHandler={openModal}
       />
     </Layout>

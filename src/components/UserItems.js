@@ -3,7 +3,12 @@ import Spacer from './Spacer';
 import Avatar from './Avatar';
 import MenuItem from './MenuItem';
 
-const UserItems = ({ avatarSrc, favoriteRecipeList, openModalHandler }) => {
+const UserItems = ({
+  avatarSrc,
+  favoriteRecipeList,
+  createdRecipeList,
+  openModalHandler,
+}) => {
   return (
     <article className="flex flex-col">
       <div className="h-24 inline-block">
@@ -15,7 +20,7 @@ const UserItems = ({ avatarSrc, favoriteRecipeList, openModalHandler }) => {
       </Button>
       <Spacer y={1} />
       <ul className="flex flex-col items-center">
-        <MenuItem isDropdown menuItemList={<></>}>
+        <MenuItem isDropdown menuItemList={createdRecipeList}>
           Created Recipes
         </MenuItem>
         <MenuItem isDropdown menuItemList={favoriteRecipeList}>
