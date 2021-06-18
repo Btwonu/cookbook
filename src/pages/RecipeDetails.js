@@ -11,8 +11,12 @@ const RecipeDetails = ({ match, history }) => {
 
   const [editorData, isCreator] = useRecipeRequest(recipeId);
 
-  const editRecipeHandler = () => {
-    recipeService.editOne();
+  const editRecipeHandler = (editorInstance) => {
+    editorInstance.current
+      .save()
+      .then((output) => recipeService.editOne(recipeId, output))
+      .then((res) => console.log(res))
+      .catch(console.error);
   };
 
   const deleteRecipeHandler = () => {

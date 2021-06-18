@@ -16,8 +16,12 @@ const createOne = (recipe) => {
   });
 };
 
-const editOne = () => {
-  console.log('Editing...');
+const editOne = (recipeId, recipe) => {
+  return axios({
+    method: 'PATCH',
+    url: `/recipes/${recipeId}`,
+    data: { recipe },
+  });
 };
 
 const deleteOne = (recipeId) => {
