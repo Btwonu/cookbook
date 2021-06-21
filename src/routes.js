@@ -7,7 +7,7 @@ import Auth from './pages/Auth';
 import CreateRecipe from './pages/CreateRecipe';
 import About from './pages/About';
 import Profile from './pages/Profile';
-
+import Shopping from './pages/Shopping';
 import RecipeDetails from './pages/RecipeDetails';
 
 export const AuthenticatedRoutes = () => {
@@ -20,6 +20,7 @@ export const AuthenticatedRoutes = () => {
           <Route exact path="/recipes/:recipeId" component={RecipeDetails} />
           <Route exact path="/about" component={About} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/shopping" component={Shopping} />
           <Route component={Recipes} />
         </Switch>
       </BrowserRouter>

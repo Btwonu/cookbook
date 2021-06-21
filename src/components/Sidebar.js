@@ -65,9 +65,9 @@ const Sidebar = ({ history }) => {
               Stopwatch
             </MenuItem>
 
-            <MenuItem linkTo="/journal">
+            <MenuItem linkTo="/shopping">
               <MdContentPaste />
-              Food Journal
+              Shopping List
             </MenuItem>
 
             <MenuItem linkTo="/recipes/create">
