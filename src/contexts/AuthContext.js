@@ -7,6 +7,8 @@ AuthContext.displayName = 'AuthContext';
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  console.log({ user });
+
   useEffect(() => {
     updateUser();
   }, []);
@@ -16,6 +18,7 @@ export const AuthProvider = ({ children }) => {
       .get('/auth')
       .then((res) => {
         setUser(res.data);
+        return res.data;
       })
       .catch((err) => {
         console.error(err);
