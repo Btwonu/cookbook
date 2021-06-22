@@ -4,6 +4,8 @@ const Button = ({ children, linkTo, className, onClick, block }) => {
   }
 
   const clickHandler = (e) => {
+    if (!onClick) return;
+
     e.preventDefault();
     onClick();
   };

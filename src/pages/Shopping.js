@@ -22,55 +22,73 @@ function Shopping() {
 
 function ShoppingList() {
   const [product, setProduct] = useState('');
-  const [products, setProducts] = useState([]);
+  const [groceries, setGroceries] = useState([]);
 
   const onInputChange = (e) => {
     setProduct(e.target.value);
   };
 
-  const onInputKeyPress = (e) => {
-    if (e.target.value === '') return;
+  const onProductAdd = (e) => {
+    if (product === '') return;
+    e.preventDefault();
 
-    if (e.keyCode === 13) {
-      let name = e.target.value;
+    let name = product;
 
-      let product = {
-        name,
-      };
+    let productData = {
+      name,
+    };
 
-      // add to list
-      console.log({ products });
-      setProducts([...products, product]);
-      setProduct('');
-    }
+    // add to list
+    setGroceries([...groceries, productData]);
+    setProduct('');
   };
 
-  const productsList = products.map((product, index) => {
-    return <Product key={index} name={product.name} />;
+  const onDeleteIconClick = (e, id) => {
+    let filteredProducts = groceries.filter((p, i) => i !== id);
+    setGroceries(filteredProducts);
+  };
+
+  const productsList = groceries.map((product, index) => {
+    return (
+      <Product
+        key={index}
+        id={index}
+        name={product.name}
+        deleteHandler={onDeleteIconClick}
+      />
+    );
   });
 
   return (
     <section className="border max-w-screen-md mx-auto flex flex-col items-center p-10">
       <ul className="w-4/5 p-4 text-lg">{productsList}</ul>
-      <input
-        type="text"
-        onChange={onInputChange}
-        value={product}
-        onKeyDown={onInputKeyPress}
-      />
-      <Button>Save</Button>
+      <form className="w-4/5 p-4 flex gap-4" onSubmit={onProductAdd}>
+        <input
+          className="border w-full bg-light p-2 focus:outline-none
+          focus:ring-2
+          focus:ring-primary"
+          type="text"
+          onChange={onInputChange}
+          value={product}
+          // onKeyDown={onInputKeyPress}
+        />
+        <button className="btn">Add</button>
+      </form>
     </section>
   );
 }
 
-function Product({ name }) {
+function Product({ name, deleteHandler, id }) {
+  console.log(id);
   return (
-    <li className="flex justify-between items-center">
+    <li id={id} className="flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <input type="checkbox" />
+        <input className="transform scale-150" type="checkbox" />
         <p>{name}</p>
       </div>
-      <MdClose />
+      <button className="cursor-pointer" onClick={(e) => deleteHandler(e, id)}>
+        <MdClose />
+      </button>
     </li>
   );
 }
