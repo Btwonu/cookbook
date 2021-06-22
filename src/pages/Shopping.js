@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
+import uniqid from 'uniqid';
 
 import Button from '../components/Button';
 import Layout from './layouts/Layout';
 
 import { MdClose } from 'react-icons/md';
-
-const products = [
-  {
-    name: 'cheese',
-  },
-];
 
 function Shopping() {
   return (
@@ -24,6 +19,8 @@ function ShoppingList() {
   const [product, setProduct] = useState('');
   const [groceries, setGroceries] = useState([]);
 
+  console.log(groceries);
+
   const onInputChange = (e) => {
     setProduct(e.target.value);
   };
@@ -32,10 +29,10 @@ function ShoppingList() {
     if (product === '') return;
     e.preventDefault();
 
-    let name = product;
-
     let productData = {
-      name,
+      id: uniqid(),
+      name: product,
+      completed: false,
     };
 
     // add to list
@@ -44,17 +41,36 @@ function ShoppingList() {
   };
 
   const onDeleteIconClick = (e, id) => {
-    let filteredProducts = groceries.filter((p, i) => i !== id);
+    let filteredProducts = groceries.filter((product) => product.id !== id);
     setGroceries(filteredProducts);
   };
 
-  const productsList = groceries.map((product, index) => {
+  const onToggleCheckbox = (id) => {
+    console.log(id);
+
+    const updatedGroceries = groceries.map((product) => {
+      if (id === product.id) {
+        return {
+          ...product,
+          completed: !product.completed,
+        };
+      }
+
+      return product;
+    });
+
+    setGroceries(updatedGroceries);
+  };
+
+  const productsList = groceries.map((product) => {
     return (
       <Product
-        key={index}
-        id={index}
+        key={product.id}
+        id={product.id}
         name={product.name}
         deleteHandler={onDeleteIconClick}
+        completed={product.completed}
+        toggleProduct={onToggleCheckbox}
       />
     );
   });
@@ -70,34 +86,33 @@ function ShoppingList() {
           type="text"
           onChange={onInputChange}
           value={product}
-          // onKeyDown={onInputKeyPress}
         />
         <button className="btn">Add</button>
       </form>
+      <Button block className="mt-4">
+        Save
+      </Button>
     </section>
   );
 }
 
-function Product({ name, deleteHandler, id }) {
-  console.log(id);
+function Product({ id, name, deleteHandler, completed, toggleProduct }) {
   return (
-    <li id={id} className="flex justify-between items-center">
+    <li className="flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <Checkbox label={name} />
+        <input
+          className="transform scale-150"
+          id={id}
+          type="checkbox"
+          defaultChecked={completed}
+          onChange={() => toggleProduct(id)}
+        />
+        <label htmlFor={id}>{name}</label>
       </div>
       <button className="cursor-pointer" onClick={(e) => deleteHandler(e, id)}>
         <MdClose />
       </button>
     </li>
-  );
-}
-
-function Checkbox({ label }) {
-  return (
-    <>
-      <input className="transform scale-150" id={label} type="checkbox" />
-      <label for={label}>{label}</label>
-    </>
   );
 }
 
