@@ -83,13 +83,21 @@ function Product({ name, deleteHandler, id }) {
   return (
     <li id={id} className="flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <input className="transform scale-150" type="checkbox" />
-        <p>{name}</p>
+        <Checkbox label={name} />
       </div>
       <button className="cursor-pointer" onClick={(e) => deleteHandler(e, id)}>
         <MdClose />
       </button>
     </li>
+  );
+}
+
+function Checkbox({ label }) {
+  return (
+    <>
+      <input className="transform scale-150" id={label} type="checkbox" />
+      <label for={label}>{label}</label>
+    </>
   );
 }
 
