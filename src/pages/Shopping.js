@@ -1,41 +1,34 @@
 import { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import uniqid from 'uniqid';
+
+import Layout from './layouts/Layout';
 
 import shoppingListService from '../services/shoppingListService';
 import { useAuth } from '../contexts/AuthContext';
 
-import Button from '../components/Button';
-import Layout from './layouts/Layout';
+import ShoppingList from '../components/ShoppingList';
 
-import { MdClose } from 'react-icons/md';
-
-function Shopping() {
-  const { user } = useAuth();
-
-  useEffect(() => {
-    shoppingListService
-      .get()
-      .then((r) => console.log({ r }))
-      .catch(console.error);
-  }, []);
-
-  return (
-    <Layout>
-      <h2 className="text-center text-2xl p-6">Shopping List</h2>
-      <ShoppingList />
-    </Layout>
-  );
-}
-
-function ShoppingList() {
+function Shopping({ history }) {
   const [productValue, setProductValue] = useState('');
   const [products, setProducts] = useState([]);
 
-  const onInputChange = (e) => {
+  const { updateUser } = useAuth();
+
+  useEffect(() => {
+    updateUser()
+      .then((user) => {
+        setProducts(user.shoppingList.products);
+      })
+      .catch(console.error);
+  }, []);
+
+  // Handlers
+  const changeProductValue = (e) => {
     setProductValue(e.target.value);
   };
 
-  const onProductAdd = (e) => {
+  const addProduct = (e) => {
     if (productValue === '') return;
     e.preventDefault();
 
@@ -50,12 +43,12 @@ function ShoppingList() {
     setProductValue('');
   };
 
-  const onDeleteIconClick = (e, id) => {
+  const deleteProduct = (e, id) => {
     let filteredProducts = products.filter((product) => product.id !== id);
     setProducts(filteredProducts);
   };
 
-  const onToggleCheckbox = (id) => {
+  const toggleProductCheckbox = (id) => {
     const updatedProducts = products.map((product) => {
       if (id === product.id) {
         return {
@@ -70,67 +63,29 @@ function ShoppingList() {
     setProducts(updatedProducts);
   };
 
-  const onShoppingListSave = () => {
+  const saveShoppingList = () => {
     shoppingListService
       .save(products)
       .then((r) => {
-        console.log({ r });
+        history.push('/');
       })
       .catch(console.error);
   };
 
-  const productsList = products.map((product) => {
-    return (
-      <Product
-        key={product.id}
-        id={product.id}
-        name={product.name}
-        deleteHandler={onDeleteIconClick}
-        completed={product.completed}
-        toggleProduct={onToggleCheckbox}
+  return (
+    <Layout>
+      <h2 className="text-center text-2xl p-6">Shopping List</h2>
+      <ShoppingList
+        products={products}
+        deleteProduct={deleteProduct}
+        toggleProductCheckbox={toggleProductCheckbox}
+        addProduct={addProduct}
+        changeProductValue={changeProductValue}
+        productValue={productValue}
+        saveShoppingList={saveShoppingList}
       />
-    );
-  });
-
-  return (
-    <section className="border max-w-screen-md mx-auto flex flex-col items-center p-10">
-      <ul className="w-4/5 p-4 text-lg">{productsList}</ul>
-      <form className="w-4/5 p-4 flex gap-4" onSubmit={onProductAdd}>
-        <input
-          className="border w-full bg-light p-2 focus:outline-none
-          focus:ring-2
-          focus:ring-primary"
-          type="text"
-          onChange={onInputChange}
-          value={productValue}
-        />
-        <button className="btn">Add</button>
-      </form>
-      <Button block className="mt-4" onClick={onShoppingListSave}>
-        Save
-      </Button>
-    </section>
+    </Layout>
   );
 }
 
-function Product({ id, name, deleteHandler, completed, toggleProduct }) {
-  return (
-    <li className="flex justify-between items-center">
-      <div className="flex items-center gap-4">
-        <input
-          className="transform scale-150"
-          id={id}
-          type="checkbox"
-          defaultChecked={completed}
-          onChange={() => toggleProduct(id)}
-        />
-        <label htmlFor={id}>{name}</label>
-      </div>
-      <button className="cursor-pointer" onClick={(e) => deleteHandler(e, id)}>
-        <MdClose />
-      </button>
-    </li>
-  );
-}
-
-export default Shopping;
+export default withRouter(Shopping);
