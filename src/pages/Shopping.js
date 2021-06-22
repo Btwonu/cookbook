@@ -1,12 +1,24 @@
 import { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
 
+import shoppingListService from '../services/shoppingListService';
+import { useAuth } from '../contexts/AuthContext';
+
 import Button from '../components/Button';
 import Layout from './layouts/Layout';
 
 import { MdClose } from 'react-icons/md';
 
 function Shopping() {
+  const { user } = useAuth();
+
+  useEffect(() => {
+    shoppingListService
+      .get()
+      .then((r) => console.log({ r }))
+      .catch(console.error);
+  }, []);
+
   return (
     <Layout>
       <h2 className="text-center text-2xl p-6">Shopping List</h2>
@@ -16,39 +28,35 @@ function Shopping() {
 }
 
 function ShoppingList() {
-  const [product, setProduct] = useState('');
-  const [groceries, setGroceries] = useState([]);
-
-  console.log(groceries);
+  const [productValue, setProductValue] = useState('');
+  const [products, setProducts] = useState([]);
 
   const onInputChange = (e) => {
-    setProduct(e.target.value);
+    setProductValue(e.target.value);
   };
 
   const onProductAdd = (e) => {
-    if (product === '') return;
+    if (productValue === '') return;
     e.preventDefault();
 
     let productData = {
       id: uniqid(),
-      name: product,
+      name: productValue,
       completed: false,
     };
 
     // add to list
-    setGroceries([...groceries, productData]);
-    setProduct('');
+    setProducts([...products, productData]);
+    setProductValue('');
   };
 
   const onDeleteIconClick = (e, id) => {
-    let filteredProducts = groceries.filter((product) => product.id !== id);
-    setGroceries(filteredProducts);
+    let filteredProducts = products.filter((product) => product.id !== id);
+    setProducts(filteredProducts);
   };
 
   const onToggleCheckbox = (id) => {
-    console.log(id);
-
-    const updatedGroceries = groceries.map((product) => {
+    const updatedProducts = products.map((product) => {
       if (id === product.id) {
         return {
           ...product,
@@ -59,10 +67,19 @@ function ShoppingList() {
       return product;
     });
 
-    setGroceries(updatedGroceries);
+    setProducts(updatedProducts);
   };
 
-  const productsList = groceries.map((product) => {
+  const onShoppingListSave = () => {
+    shoppingListService
+      .save(products)
+      .then((r) => {
+        console.log({ r });
+      })
+      .catch(console.error);
+  };
+
+  const productsList = products.map((product) => {
     return (
       <Product
         key={product.id}
@@ -85,11 +102,11 @@ function ShoppingList() {
           focus:ring-primary"
           type="text"
           onChange={onInputChange}
-          value={product}
+          value={productValue}
         />
         <button className="btn">Add</button>
       </form>
-      <Button block className="mt-4">
+      <Button block className="mt-4" onClick={onShoppingListSave}>
         Save
       </Button>
     </section>
