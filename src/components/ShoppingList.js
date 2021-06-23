@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import MenuItem from './MenuItem';
 import Product from './Product';
 import Button from './Button';
 import Spinner from 'react-spinkit';
@@ -14,17 +15,34 @@ function ShoppingList({
   productValue,
   saveShoppingList,
 }) {
-  const productsList = products.map((product) => {
-    return (
-      <Product
-        key={product.id}
-        id={product.id}
-        name={product.name}
-        deleteProduct={deleteProduct}
-        completed={product.completed}
-        toggleProductCheckbox={toggleProductCheckbox}
-      />
-    );
+  const uncompletedProductList = products.map((product) => {
+    if (!product.completed) {
+      return (
+        <Product
+          key={product.id}
+          id={product.id}
+          name={product.name}
+          deleteProduct={deleteProduct}
+          completed={product.completed}
+          toggleProductCheckbox={toggleProductCheckbox}
+        />
+      );
+    }
+  });
+
+  const completedProductList = products.map((product) => {
+    if (product.completed) {
+      return (
+        <Product
+          key={product.id}
+          id={product.id}
+          name={product.name}
+          deleteProduct={deleteProduct}
+          completed={product.completed}
+          toggleProductCheckbox={toggleProductCheckbox}
+        />
+      );
+    }
   });
 
   return (
@@ -37,7 +55,19 @@ function ShoppingList({
           />
         </div>
       ) : (
-        <ul className="w-4/5 p-4 text-lg">{productsList}</ul>
+        <>
+          <ul className="w-4/5 p-4 text-lg">{uncompletedProductList}</ul>
+          <hr className="w-4/5 m-auto" />
+          <ul className="w-4/5 p-4 text-lg">
+            <MenuItem
+              isDropdown
+              menuItemList={completedProductList}
+              subMenuClasses="line-through"
+            >
+              Completed
+            </MenuItem>
+          </ul>
+        </>
       )}
 
       <form className="w-4/5 p-4 flex gap-4" onSubmit={addProduct}>

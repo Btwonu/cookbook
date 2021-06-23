@@ -2,8 +2,16 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdExpandMore } from 'react-icons/md';
 
-const MenuItem = ({ linkTo, children, isDropdown, menuItemList }) => {
+const MenuItem = ({
+  linkTo,
+  children,
+  isDropdown,
+  menuItemList,
+  subMenuClasses,
+}) => {
   const [menuOpened, setMenuOpened] = useState();
+
+  // old submenu classes -> 'flex flex-col items-start max-w-fit-content';
 
   const openMenu = (e) => {
     e.preventDefault();
@@ -30,11 +38,7 @@ const MenuItem = ({ linkTo, children, isDropdown, menuItemList }) => {
           ) : null}
         </Link>
       </li>
-      {menuOpened ? (
-        <ul className="flex flex-col items-start max-w-fit-content">
-          {menuItemList}
-        </ul>
-      ) : null}
+      {menuOpened ? <ul className={subMenuClasses}>{menuItemList}</ul> : null}
     </>
   );
 };
