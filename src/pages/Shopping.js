@@ -12,13 +12,17 @@ import ShoppingList from '../components/ShoppingList';
 function Shopping({ history }) {
   const [productValue, setProductValue] = useState('');
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { updateUser } = useAuth();
 
   useEffect(() => {
+    setIsLoading(true);
+
     updateUser()
       .then((user) => {
         setProducts(user.shoppingList.products);
+        setIsLoading(false);
       })
       .catch(console.error);
   }, []);
@@ -76,6 +80,7 @@ function Shopping({ history }) {
     <Layout>
       <h2 className="text-center text-2xl p-6">Shopping List</h2>
       <ShoppingList
+        isLoading={isLoading}
         products={products}
         deleteProduct={deleteProduct}
         toggleProductCheckbox={toggleProductCheckbox}

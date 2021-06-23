@@ -5,6 +5,7 @@ import Button from './Button';
 import Spinner from 'react-spinkit';
 
 function ShoppingList({
+  isLoading,
   products,
   deleteProduct,
   toggleProductCheckbox,
@@ -13,7 +14,6 @@ function ShoppingList({
   productValue,
   saveShoppingList,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   const productsList = products.map((product) => {
     return (
       <Product
@@ -30,11 +30,12 @@ function ShoppingList({
   return (
     <section className="border max-w-screen-md mx-auto flex flex-col items-center p-10">
       {isLoading ? (
-        <Spinner
-          className="relative left-1/2 top-1/4"
-          name="ball-scale-ripple-multiple"
-          color="var(--color-accent)"
-        />
+        <div className="h-24 flex items-center">
+          <Spinner
+            name="ball-scale-ripple-multiple"
+            color="var(--color-accent)"
+          />
+        </div>
       ) : (
         <ul className="w-4/5 p-4 text-lg">{productsList}</ul>
       )}
