@@ -133,9 +133,9 @@ function Timer({ scheduledDuration = 10000 }) {
       </div>
 
       <div className="flex gap-2 pt-6">
-        <Button onClick={start}>Start</Button>
-        <Button onClick={pause}>Pause</Button>
         <Button onClick={stop}>Reset</Button>
+        <Button onClick={pause}>Pause</Button>
+        <Button onClick={start}>Start</Button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const Profile = () => {
   const { user } = useAuth();
 
   const openModal = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setModalIsOpened(true);
   };
 
