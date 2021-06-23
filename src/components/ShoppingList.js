@@ -15,8 +15,9 @@ function ShoppingList({
   productValue,
   saveShoppingList,
 }) {
-  const uncompletedProductList = products.map((product) => {
-    if (!product.completed) {
+  const uncompletedProductList = products
+    .filter((product) => !product.completed)
+    .map((product) => {
       return (
         <Product
           key={product.id}
@@ -27,11 +28,11 @@ function ShoppingList({
           toggleProductCheckbox={toggleProductCheckbox}
         />
       );
-    }
-  });
+    });
 
-  const completedProductList = products.map((product) => {
-    if (product.completed) {
+  const completedProductList = products
+    .filter((product) => product.completed)
+    .map((product) => {
       return (
         <Product
           key={product.id}
@@ -42,8 +43,7 @@ function ShoppingList({
           toggleProductCheckbox={toggleProductCheckbox}
         />
       );
-    }
-  });
+    });
 
   return (
     <section className="border max-w-screen-md mx-auto flex flex-col items-center p-10">
@@ -56,17 +56,26 @@ function ShoppingList({
         </div>
       ) : (
         <>
-          <ul className="w-4/5 p-4 text-lg">{uncompletedProductList}</ul>
-          <hr className="w-4/5 m-auto" />
-          <ul className="w-4/5 p-4 text-lg">
-            <MenuItem
-              isDropdown
-              menuItemList={completedProductList}
-              subMenuClasses="line-through"
-            >
-              Completed
-            </MenuItem>
-          </ul>
+          {uncompletedProductList.length > 0 ? (
+            <ul className="w-4/5 p-4 text-lg">{uncompletedProductList}</ul>
+          ) : (
+            <h2>Add products..</h2>
+          )}
+
+          {completedProductList.length > 0 && (
+            <>
+              <hr className="w-4/5 m-auto" />
+              <ul className="w-4/5 p-4 text-lg">
+                <MenuItem
+                  isDropdown
+                  menuItemList={completedProductList}
+                  subMenuClasses="line-through"
+                >
+                  Completed
+                </MenuItem>
+              </ul>
+            </>
+          )}
         </>
       )}
 
