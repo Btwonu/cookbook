@@ -6,10 +6,13 @@ AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userIsLoading, setUserIsLoading] = useState(false);
 
   console.log({ user });
 
   useEffect(() => {
+    setUserIsLoading(true);
+    console.log('hello from auth contexts useeffect');
     updateUser();
   }, []);
 
@@ -18,11 +21,13 @@ export const AuthProvider = ({ children }) => {
       .get('/auth')
       .then((res) => {
         setUser(res.data);
+        setUserIsLoading(false);
         return res.data;
       })
       .catch((err) => {
         console.error(err);
         setUser(null);
+        setUserIsLoading(false);
       });
   };
 
@@ -65,6 +70,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     register,
+    userIsLoading,
   };
 
   return (
