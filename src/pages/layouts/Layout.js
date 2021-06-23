@@ -6,7 +6,7 @@ const Layout = (props) => {
     <div className="layout h-screen">
       <Header />
       <div className="bg-light">
-        <main className="container mx-auto">{props.children}</main>
+        <main className="container mx-auto h-full">{props.children}</main>
       </div>
       <Footer />
     </div>

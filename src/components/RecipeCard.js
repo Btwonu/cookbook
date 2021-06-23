@@ -45,7 +45,7 @@ const RecipeCard = ({
     <article className="lg:w-1/2 p-4">
       <a
         href={`/recipes/${recipeId}`}
-        className="block bg-main h-full flex flex-col justify-between border p-6 rounded-lg cursor-default hover:underline"
+        className="block bg-main h-full flex flex-col justify-between border p-6 cursor-default hover:underline"
       >
         {imageUrl ? (
           <img

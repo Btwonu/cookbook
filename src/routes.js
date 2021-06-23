@@ -9,6 +9,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import Shopping from './pages/Shopping';
 import RecipeDetails from './pages/RecipeDetails';
+import TimerPage from './pages/TimerPage';
 
 export const AuthenticatedRoutes = () => {
   return (
@@ -21,6 +22,7 @@ export const AuthenticatedRoutes = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/shopping" component={Shopping} />
+          <Route exact path="/timer" component={TimerPage} />
           <Route component={Recipes} />
         </Switch>
       </BrowserRouter>

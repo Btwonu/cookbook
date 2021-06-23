@@ -26,12 +26,12 @@ const Header = () => {
         <nav className="mx-auto flex flex-wrap items-center text-base justify-center navigation">
           {user && (
             <>
-              <Link
+              {/* <Link
                 to="/"
                 className="mr-5 hover:text-accentDark cursor-pointer"
               >
                 Home
-              </Link>
+              </Link> */}
               <Link
                 to="/recipes"
                 className="mr-5 hover:text-accentDark cursor-pointer"

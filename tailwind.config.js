@@ -5,6 +5,7 @@ module.exports = {
     fontFamily: {
       heading: ['Raleway', 'sans-serif'],
       text: ['Open Sans', 'ui-sans-serif', 'system-ui'],
+      mono: ['Source Code Pro', 'ui-monospace', 'monospace'],
     },
     extend: {
       colors: {

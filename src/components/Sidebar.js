@@ -51,18 +51,13 @@ const Sidebar = ({ history }) => {
           <p className="w-2/5 sm:w-1/5 md:w-2/5 lg:w-3/5 p-2 m-auto">
             <Avatar src={user.avatar.url} />
           </p>
-          {/* <img
-            src={user.avatar.url}
-            className="rounded-full m-auto w-3/6 py-4"
-            alt="User avatar"
-          /> */}
         </header>
         <hr className="w-5/6 m-auto lg:w-full" />
         <section>
           <ul className="w-5/6 relative md:inline-block lg:w-full left-1/2 transform -translate-x-1/2">
-            <MenuItem linkTo="/stopwatch">
+            <MenuItem linkTo="/timer">
               <MdTimer />
-              Stopwatch
+              Timer
             </MenuItem>
 
             <MenuItem linkTo="/shopping">
