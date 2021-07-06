@@ -140,6 +140,11 @@ function Timer({ scheduledDuration = 1000 }) {
         <Button onClick={pause}>Pause</Button>
         <Button onClick={start}>Start</Button>
       </div>
+      {soundPlaying && (
+        <Button className="mt-2" onClick={toggleSound}>
+          Stop alarm
+        </Button>
+      )}
     </div>
   );
 }
