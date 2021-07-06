@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import useSound from '../hooks/useSound';
 
 import Button from './Button';
 
-function Timer({ scheduledDuration = 10000 }) {
+function Timer({ scheduledDuration = 1000 }) {
   const [time, setTime] = useState({
     hours: 0,
     minutes: 0,
@@ -11,6 +12,7 @@ function Timer({ scheduledDuration = 10000 }) {
   });
   const [duration, setDuration] = useState(scheduledDuration);
   const [active, setActive] = useState(false);
+  const [soundPlaying, toggleSound] = useSound('/ocean-loop.wav');
   const remaining = useRef();
 
   useEffect(() => {
@@ -31,6 +33,7 @@ function Timer({ scheduledDuration = 10000 }) {
         console.log('Clearing interval because remaining is 0');
         clearTimeout(intervalId);
         setActive(false);
+        toggleSound();
       }
     };
 
