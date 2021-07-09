@@ -4,6 +4,7 @@ import uniqid from 'uniqid';
 
 import Layout from './layouts/Layout';
 
+import Sidebar from '../components/Sidebar';
 import shoppingListService from '../services/shoppingListService';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -78,6 +79,7 @@ function Shopping({ history }) {
 
   return (
     <Layout>
+      <Sidebar />
       <h2 className="text-center text-2xl p-6">Shopping List</h2>
       <ShoppingList
         isLoading={isLoading}

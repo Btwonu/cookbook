@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Layout from './layouts/Layout';
 
+import Sidebar from '../components/Sidebar';
 import UserItems from '../components/UserItems';
 import AvatarPicker from '../components/AvatarPicker';
 import Modal from '../components/Modal';
@@ -35,6 +36,7 @@ const Profile = () => {
 
   return (
     <Layout>
+      <Sidebar />
       <Modal isOpened={modalIsOpened} closeHandler={closeModal}>
         <AvatarPicker />
       </Modal>

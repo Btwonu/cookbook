@@ -1,6 +1,7 @@
 import Layout from '../pages/layouts/Layout';
 import Editor from '../components/Editor/Editor';
 
+import Sidebar from '../components/Sidebar';
 import recipeService from '../services/recipeService';
 import Spacer from '../components/Spacer';
 
@@ -76,6 +77,7 @@ const CreateRecipe = () => {
 
   return (
     <Layout>
+      <Sidebar />
       <h2 className="text-center text-2xl p-6">Share your recipe</h2>
       <Editor mode="create" createHandler={createRecipeHandler} />
       <Spacer y={4} />
