@@ -22,6 +22,7 @@ const Footer = () => {
             href="https://github.com/Btwonu"
             target="_blank"
             rel="noopener noreferrer"
+            className="relative t-1"
           >
             <TiSocialGithub />
           </a>

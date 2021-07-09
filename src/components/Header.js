@@ -12,10 +12,12 @@ const Header = () => {
   return (
     <header className="bg-primary">
       <div className="container mx-auto flex p-5  items-center">
-        <MdMenu
-          className="cursor-pointer text-2xl md:invisible"
-          onClick={() => toggleSidebar()}
-        />
+        <div>
+          <MdMenu
+            className="cursor-pointer text-2xl md:invisible"
+            onClick={() => toggleSidebar()}
+          />
+        </div>
         <Link
           to="/"
           className="title-font font-medium ml-3 text-xl hover:text-secondary cursor-pointer"
@@ -26,27 +28,21 @@ const Header = () => {
         <nav className="mx-auto flex flex-wrap items-center text-base justify-center navigation">
           {user && (
             <>
-              {/* <Link
-                to="/"
-                className="mr-5 hover:text-accentDark cursor-pointer"
-              >
-                Home
-              </Link> */}
               <Link
                 to="/recipes"
-                className="mr-5 hover:text-accentDark cursor-pointer"
+                className="hidden sm:block mr-5 hover:text-accentDark cursor-pointer"
               >
                 Recipes
               </Link>
               <Link
                 to="/profile"
-                className="mr-5 hover:text-accentDark cursor-pointer"
+                className="hidden sm:block mr-5 hover:text-accentDark cursor-pointer"
               >
                 Profile
               </Link>
               <Link
                 to="/about"
-                className="mr-5 hover:text-accentDark cursor-pointer"
+                className="hidden sm:block mr-5 hover:text-accentDark cursor-pointer"
               >
                 About
               </Link>

@@ -14,7 +14,10 @@ import {
   MdInput,
   MdFavoriteBorder,
   MdAdd,
+  MdPermIdentity,
+  MdInfoOutline,
 } from 'react-icons/md';
+import { IoFastFoodOutline } from 'react-icons/io5';
 
 const Sidebar = ({ history }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,6 +58,21 @@ const Sidebar = ({ history }) => {
         <hr className="w-5/6 m-auto lg:w-full" />
         <section>
           <ul className="w-5/6 relative md:inline-block lg:w-full left-1/2 transform -translate-x-1/2">
+            <section className="sm:hidden">
+              <MenuItem linkTo="/recipes">
+                <IoFastFoodOutline />
+                Recipes
+              </MenuItem>
+              <MenuItem linkTo="/profile">
+                <MdPermIdentity />
+                Profile
+              </MenuItem>
+              <MenuItem linkTo="/about">
+                <MdInfoOutline />
+                About
+              </MenuItem>
+            </section>
+
             <MenuItem linkTo="/timer">
               <MdTimer />
               Timer
