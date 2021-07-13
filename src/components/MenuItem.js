@@ -25,7 +25,7 @@ const MenuItem = ({
 
   return (
     <>
-      <li className="list-none" onClick={isDropdown ? openMenu : null}>
+      <li className="list-none w-52" onClick={isDropdown ? openMenu : null}>
         <Link
           className="flex items-center p-2 hover:bg-primary"
           to={isDropdown ? '#' : linkTo}

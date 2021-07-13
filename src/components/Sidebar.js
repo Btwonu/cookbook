@@ -47,17 +47,18 @@ const Sidebar = ({ history }) => {
   return (
     <nav className={isOpened ? navClasses : 'hidden ' + navClasses}>
       <IconContext.Provider value={{ style: { marginRight: '0.5rem' } }}>
-        <header>
+        <header className="max-w-max m-auto">
           <h2 className="text-center text-xl font-bold pb-2">
             {user.username}
           </h2>
-          <p className="w-2/5 sm:w-1/5 md:w-2/5 lg:w-3/5 p-2 m-auto">
+          {/* w-2/5 sm:w-1/5 md:w-2/5 lg:w-3/5 p-2 m-auto */}
+          <p className="">
             <Avatar src={user.avatar.url} />
           </p>
         </header>
         <hr className="w-5/6 m-auto lg:w-full" />
-        <section>
-          <ul className="w-5/6 relative md:inline-block lg:w-full left-1/2 transform -translate-x-1/2">
+        <section className="m-auto">
+          <ul className="flex flex-col items-center w-5/6 relative lg:w-full left-1/2 transform -translate-x-1/2">
             <section className="sm:hidden">
               <MenuItem linkTo="/recipes">
                 <IoFastFoodOutline />
