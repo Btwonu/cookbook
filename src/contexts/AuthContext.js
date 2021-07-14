@@ -6,11 +6,16 @@ AuthContext.displayName = 'AuthContext';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(false);
 
   console.log({ user });
 
   useEffect(() => {
-    updateUser();
+    setUserLoading(true);
+
+    updateUser().then((r) => {
+      setUserLoading(false);
+    });
   }, []);
 
   const updateUser = () => {
@@ -60,6 +65,7 @@ export const AuthProvider = ({ children }) => {
 
   const contextValue = {
     user,
+    userLoading,
     setUser,
     updateUser,
     login,

@@ -29,6 +29,7 @@ export const AuthenticatedRoutes = () => {
     </ThemeProvider>
   );
 };
+
 export const UnauthenticatedRoutes = () => {
   return (
     <ThemeProvider>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
@@ -56,10 +56,10 @@ const Sidebar = ({ history }) => {
             <Avatar src={user.avatar.url} />
           </p>
         </header>
-        <hr className="w-5/6 m-auto lg:w-full" />
+        <hr className="w-full m-auto" />
         <section className="m-auto">
-          <ul className="flex flex-col items-center w-5/6 relative lg:w-full left-1/2 transform -translate-x-1/2">
-            <section className="sm:hidden">
+          <ul className="flex flex-col items-center w-5/6 relative w-full left-1/2 transform -translate-x-1/2">
+            <section className="sm:hidden w-full">
               <MenuItem linkTo="/recipes">
                 <IoFastFoodOutline />
                 Recipes
@@ -98,7 +98,7 @@ const Sidebar = ({ history }) => {
             </MenuItem>
           </ul>
         </section>
-        <hr className="w-5/6 m-auto lg:w-full" />
+        <hr className="w-full m-auto" />
         <footer>
           {isLoading ? (
             <Spinner
