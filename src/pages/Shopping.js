@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-import Layout from './layouts/Layout';
 import SidebarLayout from './layouts/SidebarLayout';
 
-import Sidebar from '../components/Sidebar';
 import shoppingListService from '../services/shoppingListService';
 import { useAuth } from '../contexts/AuthContext';
 

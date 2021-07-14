@@ -13,7 +13,7 @@ function ShoppingList({
   productValue,
   saveShoppingList,
 }) {
-  const uncompletedProductList = products
+  const incompleteProductList = products
     .filter((product) => !product.completed)
     .map((product) => {
       return (
@@ -28,7 +28,7 @@ function ShoppingList({
       );
     });
 
-  const completedProductList = products
+  const completeProductList = products
     .filter((product) => product.completed)
     .map((product) => {
       return (
@@ -54,19 +54,19 @@ function ShoppingList({
         </div>
       ) : (
         <>
-          {uncompletedProductList.length > 0 ? (
-            <ul className="w-4/5 p-4 text-lg">{uncompletedProductList}</ul>
+          {incompleteProductList.length > 0 ? (
+            <ul className="w-4/5 p-4 text-lg">{incompleteProductList}</ul>
           ) : (
             <h2>Add products..</h2>
           )}
 
-          {completedProductList.length > 0 && (
+          {completeProductList.length > 0 && (
             <>
               <hr className="w-4/5 m-auto" />
               <ul className="w-4/5 p-4 text-lg">
                 <MenuItem
                   isDropdown
-                  menuItemList={completedProductList}
+                  menuItemList={completeProductList}
                   subMenuClasses="line-through"
                 >
                   Completed
@@ -77,20 +77,24 @@ function ShoppingList({
         </>
       )}
 
-      <form className="w-4/5 p-4 flex gap-4" onSubmit={addProduct}>
+      <form
+        className="w-4/5 p-4 flex flex-col sm:flex-row gap-4"
+        onSubmit={addProduct}
+      >
         <input
-          className="border w-full bg-light p-2 focus:outline-none
+          className="block border w-full bg-light p-2 focus:outline-none
           focus:ring-2
           focus:ring-primary"
           type="text"
           onChange={changeProductValue}
           value={productValue}
         />
-        <button className="btn">Add</button>
+        {/* <button className="btn">Add</button> */}
+        <Button className="">Add</Button>
+        <Button block className="" onClick={saveShoppingList}>
+          Save
+        </Button>
       </form>
-      <Button block className="mt-4" onClick={saveShoppingList}>
-        Save
-      </Button>
     </section>
   );
 }

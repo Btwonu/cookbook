@@ -115,7 +115,7 @@ function Timer({ scheduledDuration = 1000 }) {
   return (
     <div className="timer flex flex-col items-center">
       <div
-        className="timer__timetable text-6xl font-mono"
+        className="timer__timetable text-3xl md:text-6xl font-mono"
         onClick={timetableClickHandler}
       >
         <span className="timer__hours" onWheel={onWheelHandler}>
