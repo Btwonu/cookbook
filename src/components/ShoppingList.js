@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import MenuItem from './MenuItem';
 import Product from './Product';
 import Button from './Button';

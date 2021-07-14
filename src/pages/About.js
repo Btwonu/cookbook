@@ -1,8 +1,8 @@
-import Layout from './layouts/Layout';
+import SidebarLayout from './layouts/SidebarLayout';
 
 const About = () => {
   return (
-    <Layout>
+    <SidebarLayout>
       <article className="max-w-screen-sm m-auto leading-loose">
         <h2 className="text-2xl text-center mt-6">About</h2>
         <p className="my-6 px-6">
@@ -26,7 +26,7 @@ const About = () => {
           pecorino. Fromage gouda.
         </p>
       </article>
-    </Layout>
+    </SidebarLayout>
   );
 };
 

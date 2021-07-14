@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import Layout from './layouts/Layout';
+import SidebarLayout from './layouts/SidebarLayout';
 
 import UserItems from '../components/UserItems';
 import AvatarPicker from '../components/AvatarPicker';
@@ -34,7 +34,7 @@ const Profile = () => {
   });
 
   return (
-    <Layout>
+    <SidebarLayout>
       <Modal isOpened={modalIsOpened} closeHandler={closeModal}>
         <AvatarPicker />
       </Modal>
@@ -46,7 +46,7 @@ const Profile = () => {
         createdRecipeList={userCreatedRecipeList}
         openModalHandler={openModal}
       />
-    </Layout>
+    </SidebarLayout>
   );
 };
 
