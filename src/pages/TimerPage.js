@@ -1,12 +1,12 @@
 import Layout from './layouts/Layout';
+import SidebarLayout from './layouts/SidebarLayout';
 
 import Sidebar from '../components/Sidebar';
 import Timer from '../components/Timer';
 
 function TimerPage() {
   return (
-    <Layout>
-      <Sidebar />
+    <SidebarLayout>
       {/* <div className="flex flex-col h-full justify-center"> */}
       <h2 className="text-center text-2xl p-6">Cooking time</h2>
       {/* <Spacer y={4} /> */}
@@ -14,7 +14,7 @@ function TimerPage() {
         <Timer />
       </div>
       {/* </div> */}
-    </Layout>
+    </SidebarLayout>
   );
 }
 

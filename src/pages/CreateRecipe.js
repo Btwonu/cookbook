@@ -1,4 +1,4 @@
-import Layout from '../pages/layouts/Layout';
+import SidebarLayout from '../pages/layouts/SidebarLayout';
 import Editor from '../components/Editor/Editor';
 
 import recipeService from '../services/recipeService';
@@ -75,11 +75,11 @@ const CreateRecipe = () => {
   };
 
   return (
-    <Layout>
+    <SidebarLayout>
       <h2 className="text-center text-2xl p-6">Share your recipe</h2>
       <Editor mode="create" createHandler={createRecipeHandler} />
       <Spacer y={4} />
-    </Layout>
+    </SidebarLayout>
   );
 };
 

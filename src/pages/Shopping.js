@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import uniqid from 'uniqid';
 
 import Layout from './layouts/Layout';
+import SidebarLayout from './layouts/SidebarLayout';
 
 import Sidebar from '../components/Sidebar';
 import shoppingListService from '../services/shoppingListService';
@@ -78,8 +79,7 @@ function Shopping({ history }) {
   };
 
   return (
-    <Layout>
-      <Sidebar />
+    <SidebarLayout>
       <h2 className="text-center text-2xl p-6">Shopping List</h2>
       <ShoppingList
         isLoading={isLoading}
@@ -91,7 +91,7 @@ function Shopping({ history }) {
         productValue={productValue}
         saveShoppingList={saveShoppingList}
       />
-    </Layout>
+    </SidebarLayout>
   );
 }
 
